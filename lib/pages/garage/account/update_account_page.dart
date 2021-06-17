@@ -92,6 +92,7 @@ class _UpdateAccountPageState extends State<UpdateAccountPage> {
                   child: Container(
                     padding: EdgeInsets.all(16.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextField(
                           focusNode: this._ui['form']['updateAccount']['field']['name']['focusNode'],

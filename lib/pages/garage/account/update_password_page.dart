@@ -95,6 +95,7 @@ class _UpdatePasswordPageState extends State<UpdatePasswordPage> {
                   child: Container(
                     padding: EdgeInsets.all(16.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextField(
                           autofocus: true,
