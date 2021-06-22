@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> {
 
     await Future.delayed(
       Duration(
-        seconds: 10,
+        seconds: 1,
       ),
     );
 
