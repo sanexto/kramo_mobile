@@ -13,6 +13,7 @@ const Map<String, IconData> _icons = {
   'search': FontAwesomeIcons.search,
   'sliders-h': FontAwesomeIcons.slidersH,
   'sync': FontAwesomeIcons.sync,
+  'times': FontAwesomeIcons.times,
   'user': FontAwesomeIcons.solidUser,
   'user-circle': FontAwesomeIcons.solidUserCircle,
   'user-lock': FontAwesomeIcons.userLock,

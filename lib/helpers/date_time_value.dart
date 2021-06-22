@@ -24,19 +24,29 @@ class DateTimeValue {
 
   set value(String newValue) {
 
-    final DateTime? newDateTime = parseDateTime(newValue, this._valueFormat, this._valueLocale);
+    if (newValue.isNotEmpty) {
 
-    if (newDateTime != null) {
+      final DateTime? newDateTime = parseDateTime(newValue, this._valueFormat, this._valueLocale);
 
-      final String? newMask = formatDateTime(newDateTime, this._maskFormat, this._maskLocale);
+      if (newDateTime != null) {
 
-      if (newMask != null) {
+        final String? newMask = formatDateTime(newDateTime, this._maskFormat, this._maskLocale);
 
-        this._value = newValue;
-        this._mask = newMask;
-        this._dateTime = newDateTime;
+        if (newMask != null) {
+
+          this._value = newValue;
+          this._mask = newMask;
+          this._dateTime = newDateTime;
+
+        }
 
       }
+
+    } else {
+
+      this._value = '';
+      this._mask = '';
+      this._dateTime = null;
 
     }
 
@@ -46,19 +56,29 @@ class DateTimeValue {
 
   set mask(String newMask) {
 
-    final DateTime? newDateTime = parseDateTime(newMask, this._maskFormat, this._maskLocale);
+    if (newMask.isNotEmpty) {
 
-    if (newDateTime != null) {
+      final DateTime? newDateTime = parseDateTime(newMask, this._maskFormat, this._maskLocale);
 
-      final String? newValue = formatDateTime(newDateTime, this._valueFormat, this._valueLocale);
+      if (newDateTime != null) {
 
-      if (newValue != null) {
+        final String? newValue = formatDateTime(newDateTime, this._valueFormat, this._valueLocale);
 
-        this._value = newValue;
-        this._mask = newMask;
-        this._dateTime = newDateTime;
+        if (newValue != null) {
+
+          this._value = newValue;
+          this._mask = newMask;
+          this._dateTime = newDateTime;
+
+        }
 
       }
+
+    } else {
+
+      this._value = '';
+      this._mask = '';
+      this._dateTime = null;
 
     }
 
@@ -80,6 +100,12 @@ class DateTimeValue {
         this._dateTime = newDateTime;
 
       }
+
+    } else {
+
+      this._value = '';
+      this._mask = '';
+      this._dateTime = null;
 
     }
 
