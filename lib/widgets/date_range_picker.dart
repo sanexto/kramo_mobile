@@ -7,7 +7,7 @@ import '../utils/date_time_formatter.dart';
 class DateRangePicker {
 
   static final DateTime _firstDate = parseDateTime(config['types']['date']['min'], 'yyyy-M-d H:m:s')!;
-  static final DateTime _lastDate = parseDateTime(config['types']['date']['min'], 'yyyy-M-d H:m:s')!;
+  static final DateTime _lastDate = parseDateTime(config['types']['date']['max'], 'yyyy-M-d H:m:s')!;
 
   static Future<DateTimeRange?> show({required BuildContext context, DateTimeRange? initialDateRange, String? fieldHintText}) async {
 
