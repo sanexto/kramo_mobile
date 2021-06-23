@@ -33,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
       ),
-      photoSize: 48.0,
+      photoSize: 64.0,
       useLoader: false,
     );
 
