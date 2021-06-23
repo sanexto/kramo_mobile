@@ -198,7 +198,7 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                               onTap: () => this._cancelableTask.run('_openVehicleExitDatePickerDialog', this._openVehicleExitDatePickerDialog(context)),
                               onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
                             ),
-                            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.toString().isEmpty ? SizedBox.shrink() : Padding(
+                            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
                               padding: EdgeInsets.only(
                                 top: 6.0,
                               ),
@@ -238,7 +238,7 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                               textInputAction: TextInputAction.done,
                               onTap: () => this._cancelableTask.run('_openVehicleExitTimePickerDialog', this._openVehicleExitTimePickerDialog(context)),
                             ),
-                            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.toString().isEmpty ? SizedBox.shrink() : Padding(
+                            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
                               padding: EdgeInsets.only(
                                 top: 6.0,
                               ),
@@ -379,7 +379,7 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                           'error': null,
                           'dateTimeValue': DateTimeValue(
                             valueFormat: 'H:m',
-                            maskFormat: 'H:mm',
+                            maskFormat: 'HH:mm',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
                         },
@@ -410,7 +410,7 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                           'error': null,
                           'dateTimeValue': DateTimeValue(
                             valueFormat: 'H:m',
-                            maskFormat: 'H:mm',
+                            maskFormat: 'HH:mm',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
                         },

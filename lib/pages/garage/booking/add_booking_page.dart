@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../../../api/api.dart' as api;
 import '../../../api/req/req.dart' as req;
 import '../../../api/res/res.dart' as res;
@@ -8,6 +10,7 @@ import '../../../helpers/date_time_value.dart';
 
 import '../../../utils/cancelable_task.dart';
 import '../../../utils/deep_map.dart';
+import '../../../utils/pick_icon.dart';
 
 import '../../../widgets/error_box.dart';
 import '../../../widgets/date_picker.dart';
@@ -170,37 +173,83 @@ class _AddBookingPageState extends State<AddBookingPage> {
                         SizedBox(
                           height: 8.0,
                         ),
-                        TextField(
-                          focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
-                          controller: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['label'],
-                            hintText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['hint'],
-                            errorText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          readOnly: true,
-                          textInputAction: TextInputAction.next,
-                          onTap: () => this._cancelableTask.run('_openVehicleExitDatePickerDialog', this._openVehicleExitDatePickerDialog(context)),
-                          onEditingComplete: () => this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
+                        Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            TextField(
+                              focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
+                              controller: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'],
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.only(
+                                  left: 12.0,
+                                  top: 12.0,
+                                  right: 48.0,
+                                  bottom: 12.0,
+                                ),
+                                labelText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['label'],
+                                hintText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['hint'],
+                                errorText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['error'],
+                                errorMaxLines: 100,
+                                filled: true,
+                              ),
+                              readOnly: true,
+                              textInputAction: TextInputAction.next,
+                              onTap: () => this._cancelableTask.run('_openVehicleExitDatePickerDialog', this._openVehicleExitDatePickerDialog(context)),
+                              onEditingComplete: () => this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
+                            ),
+                            this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                              padding: EdgeInsets.only(
+                                top: 6.0,
+                              ),
+                              child: IconButton(
+                                icon: FaIcon(
+                                  pickIcon('times'),
+                                ),
+                                color: Colors.black45,
+                                onPressed: () => this._clearVehicleExitDate(),
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 8.0,
                         ),
-                        TextField(
-                          focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
-                          controller: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['label'],
-                            hintText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['hint'],
-                            errorText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          readOnly: true,
-                          textInputAction: TextInputAction.done,
-                          onTap: () => this._cancelableTask.run('_openVehicleExitTimePickerDialog', this._openVehicleExitTimePickerDialog(context)),
+                        Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            TextField(
+                              focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
+                              controller: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'],
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.only(
+                                  left: 12.0,
+                                  top: 12.0,
+                                  right: 48.0,
+                                  bottom: 12.0,
+                                ),
+                                labelText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['label'],
+                                hintText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['hint'],
+                                errorText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['error'],
+                                errorMaxLines: 100,
+                                filled: true,
+                              ),
+                              readOnly: true,
+                              textInputAction: TextInputAction.done,
+                              onTap: () => this._cancelableTask.run('_openVehicleExitTimePickerDialog', this._openVehicleExitTimePickerDialog(context)),
+                            ),
+                            this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                              padding: EdgeInsets.only(
+                                top: 6.0,
+                              ),
+                              child: IconButton(
+                                icon: FaIcon(
+                                  pickIcon('times'),
+                                ),
+                                color: Colors.black45,
+                                onPressed: () => this._clearVehicleExitTime(),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -312,7 +361,7 @@ class _AddBookingPageState extends State<AddBookingPage> {
                       'error': null,
                       'dateTimeValue': DateTimeValue(
                         valueFormat: 'H:m',
-                        maskFormat: 'H:mm',
+                        maskFormat: 'HH:mm',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
                     },
@@ -343,7 +392,7 @@ class _AddBookingPageState extends State<AddBookingPage> {
                       'error': null,
                       'dateTimeValue': DateTimeValue(
                         valueFormat: 'H:m',
-                        maskFormat: 'H:mm',
+                        maskFormat: 'HH:mm',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
                     },
@@ -456,6 +505,8 @@ class _AddBookingPageState extends State<AddBookingPage> {
       this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime = pickedDate;
       this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
 
+      this.setState(() {});
+
     }
 
   }
@@ -472,7 +523,27 @@ class _AddBookingPageState extends State<AddBookingPage> {
       this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime = pickedTime;
       this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
 
+      this.setState(() {});
+
     }
+
+  }
+
+  void _clearVehicleExitDate() {
+
+    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = '';
+    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
+
+    this.setState(() {});
+
+  }
+
+  void _clearVehicleExitTime() {
+
+    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = '';
+    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
+
+    this.setState(() {});
 
   }
 
