@@ -145,7 +145,7 @@ class _ViewBookingPageState extends State<ViewBookingPage> {
                           ),
                         ),
                         Text(
-                          this._ui['bookingInfo']['vehicleExit']['dateTimeValue'].mask,
+                          this._ui['bookingInfo']['vehicleExit']['dateTimeValue'].value.isEmpty ? '-' : this._ui['bookingInfo']['vehicleExit']['dateTimeValue'].mask,
                         ),
                         Divider(
                           height: 16.0,
