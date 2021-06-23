@@ -24,28 +24,30 @@ class DateTimeValue {
 
   set value(String newValue) {
 
-    if (newValue.isNotEmpty) {
+    final DateTime? newDateTime = parseDateTime(newValue, this._valueFormat, this._valueLocale);
 
-      final DateTime? newDateTime = parseDateTime(newValue, this._valueFormat, this._valueLocale);
+    if (newDateTime != null) {
 
-      if (newDateTime != null) {
+      final String? newMask = formatDateTime(newDateTime, this._maskFormat, this._maskLocale);
 
-        final String? newMask = formatDateTime(newDateTime, this._maskFormat, this._maskLocale);
+      if (newMask != null) {
 
-        if (newMask != null) {
+        this._value = newValue;
+        this._mask = newMask;
+        this._dateTime = newDateTime;
 
-          this._value = newValue;
-          this._mask = newMask;
-          this._dateTime = newDateTime;
+      } else {
 
-        }
+        this._value = newValue;
+        this._mask = newValue;
+        this._dateTime = null;
 
       }
 
     } else {
 
-      this._value = '';
-      this._mask = '';
+      this._value = newValue;
+      this._mask = newValue;
       this._dateTime = null;
 
     }
@@ -56,28 +58,30 @@ class DateTimeValue {
 
   set mask(String newMask) {
 
-    if (newMask.isNotEmpty) {
+    final DateTime? newDateTime = parseDateTime(newMask, this._maskFormat, this._maskLocale);
 
-      final DateTime? newDateTime = parseDateTime(newMask, this._maskFormat, this._maskLocale);
+    if (newDateTime != null) {
 
-      if (newDateTime != null) {
+      final String? newValue = formatDateTime(newDateTime, this._valueFormat, this._valueLocale);
 
-        final String? newValue = formatDateTime(newDateTime, this._valueFormat, this._valueLocale);
+      if (newValue != null) {
 
-        if (newValue != null) {
+        this._value = newValue;
+        this._mask = newMask;
+        this._dateTime = newDateTime;
 
-          this._value = newValue;
-          this._mask = newMask;
-          this._dateTime = newDateTime;
+      } else {
 
-        }
+        this._value = newMask;
+        this._mask = newMask;
+        this._dateTime = null;
 
       }
 
     } else {
 
-      this._value = '';
-      this._mask = '';
+      this._value = newMask;
+      this._mask = newMask;
       this._dateTime = null;
 
     }
@@ -98,6 +102,12 @@ class DateTimeValue {
         this._value = newValue;
         this._mask = newMask;
         this._dateTime = newDateTime;
+
+      } else {
+
+        this._value = '';
+        this._mask = '';
+        this._dateTime = null;
 
       }
 
