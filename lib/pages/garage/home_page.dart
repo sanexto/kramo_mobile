@@ -288,7 +288,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (BuildContext context, Map<String, dynamic> item, int index) {
                         return MetaData(
                           metaData: {
-                            'bookingId': item['info']['bookingId']['value'],
+                            'bookingId': item['info']['bookingId'],
                           },
                           child: Builder(
                             builder: (BuildContext context) {
@@ -871,10 +871,7 @@ class _HomePageState extends State<HomePage> {
 
               final Map<String, dynamic> _item = {
                 'info': {
-                  'bookingId': {
-                    'label': DeepMap(item).getString('info.bookingId.label') ?? '',
-                    'value': DeepMap(item).getInt('info.bookingId.value') ?? 0,
-                  },
+                  'bookingId': DeepMap(item).getInt('info.bookingId') ?? 0,
                   'vehiclePlate': {
                     'label': DeepMap(item).getString('info.vehiclePlate.label') ?? '',
                     'value': DeepMap(item).getString('info.vehiclePlate.value') ?? '',
