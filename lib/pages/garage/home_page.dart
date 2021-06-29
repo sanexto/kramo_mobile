@@ -9,6 +9,8 @@ import '../../api/api.dart' as api;
 import '../../api/req/req.dart' as req;
 import '../../api/res/res.dart' as res;
 
+import '../../helpers/date_time_value.dart';
+import '../../helpers/date_time_range_value.dart';
 import '../../helpers/floating_action_button_animation.dart';
 
 import '../../utils/cancelable_task.dart';
@@ -17,8 +19,13 @@ import '../../utils/pick_icon.dart';
 
 import '../../widgets/error_box.dart';
 
+import '../../dialogs/garage/booking/delete_booking_dialog.dart';
+
 import '../auth/login_page.dart';
+import './booking/filter_booking_page.dart';
+import './booking/view_booking_page.dart';
 import './booking/add_booking_page.dart';
+import './booking/update_booking_page.dart';
 import './account/update_account_page.dart';
 import './account/update_password_page.dart';
 
@@ -195,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                       pickIcon('sliders-h'),
                     ),
                     color: Colors.black45,
-                    onPressed: null,
+                    onPressed: () => this._cancelableTask.run('_openFilterBookingPage', this._openFilterBookingPage(context)),
                   ),
                 ],
               ),
@@ -308,19 +315,6 @@ class _HomePageState extends State<HomePage> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  item['info']['bookingId']['label'],
-                                                  style: TextStyle(
-                                                    color: Theme.of(context).textTheme.headline1!.color,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '#${item['info']['bookingId']['value'].toString()}',
-                                                ),
-                                                Divider(
-                                                  height: 16.0,
-                                                  color: Colors.transparent,
-                                                ),
-                                                Text(
                                                   item['info']['vehiclePlate']['label'],
                                                   style: TextStyle(
                                                     color: Theme.of(context).textTheme.headline1!.color,
@@ -340,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  item['info']['vehicleEntry']['value'],
+                                                  item['info']['vehicleEntry']['dateTimeValue'].mask,
                                                 ),
                                                 Divider(
                                                   height: 16.0,
@@ -353,7 +347,7 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  item['info']['vehicleExit']['value'],
+                                                  item['info']['vehicleExit']['dateTimeValue'].mask,
                                                 ),
                                               ],
                                             ),
@@ -374,12 +368,12 @@ class _HomePageState extends State<HomePage> {
                                                 value: item['value'],
                                               );
                                             }).toList(),
-                                            onSelected: null,
+                                            onSelected: (String value) => this._cancelableTask.run('_bookingItemPopupMenuSelectionHandler', this._bookingItemPopupMenuSelectionHandler(context, value)),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    onTap: null,
+                                    onTap: () => this._cancelableTask.run('_openViewBookingPage', this._openViewBookingPage(context)),
                                   ),
                                 ),
                               );
@@ -513,9 +507,98 @@ class _HomePageState extends State<HomePage> {
                   'pageSize': 20,
                 },
               },
+              'page': {
+                'filterBooking': {
+                  'title': DeepMap(response.body).getString('page.filterBooking.title') ?? '',
+                  'actionMenu': {
+                    'item': {
+                      'clearFilter': {
+                        'title': DeepMap(response.body).getString('page.filterBooking.actionMenu.item.clearFilter.title') ?? '',
+                      },
+                    },
+                  },
+                  'form': {
+                    'filterBooking': {
+                      'field': {
+                        'vehicleEntry': {
+                          'focusNode': FocusNode(),
+                          'controller': TextEditingController(),
+                          'label': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleEntry.label') ?? '',
+                          'hint': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleEntry.hint') ?? '',
+                          'dateTimeRangeValue': DateTimeRangeValue(
+                            valueSeparator: ' - ',
+                            valueFormat: 'yyyy/M/d',
+                            maskSeparator: ' - ',
+                            maskFormat: 'd MMM yyyy',
+                            maskLocale: Localizations.localeOf(this.context).languageCode,
+                          ),
+                          'default': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleEntry.default') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleEntry.pickerHint') ?? '',
+                        },
+                        'vehicleExit': {
+                          'focusNode': FocusNode(),
+                          'controller': TextEditingController(),
+                          'label': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleExit.label') ?? '',
+                          'hint': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleExit.hint') ?? '',
+                          'dateTimeRangeValue': DateTimeRangeValue(
+                            valueSeparator: ' - ',
+                            valueFormat: 'yyyy/M/d',
+                            maskSeparator: ' - ',
+                            maskFormat: 'd MMM yyyy',
+                            maskLocale: Localizations.localeOf(this.context).languageCode,
+                          ),
+                          'default': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleExit.default') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleExit.pickerHint') ?? '',
+                        },
+                        'orderBy': {
+                          'focusNode': FocusNode(),
+                          'controller': TextEditingController(),
+                          'label': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.orderBy.label') ?? '',
+                          'hint': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.orderBy.hint') ?? '',
+                          'item': DeepMap(response.body).getList<Map<String, dynamic>>('page.filterBooking.form.filterBooking.field.orderBy.item').map<Map<String, dynamic>>((Map<String, dynamic> item) {
+
+                            return {
+                              'label': DeepMap(item).getString('label') ?? '',
+                              'value': DeepMap(item).getString('value') ?? '',
+                            };
+
+                          }).toList(),
+                          'default': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.orderBy.default') ?? '',
+                        },
+                        'order': {
+                          'focusNode': FocusNode(),
+                          'controller': TextEditingController(),
+                          'label': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.order.label') ?? '',
+                          'hint': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.order.hint') ?? '',
+                          'item': DeepMap(response.body).getList<Map<String, dynamic>>('page.filterBooking.form.filterBooking.field.order.item').map<Map<String, dynamic>>((Map<String, dynamic> item) {
+
+                            return {
+                              'label': DeepMap(item).getString('label') ?? '',
+                              'value': DeepMap(item).getString('value') ?? '',
+                            };
+
+                          }).toList(),
+                          'default': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.order.default') ?? '',
+                        },
+                      },
+                      'button': {
+                        'apply': {
+                          'label': DeepMap(response.body).getString('page.filterBooking.form.filterBooking.button.apply.label') ?? '',
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             };
 
             this._ui['form']['searchBooking']['field']['term']['controller'].text = DeepMap(response.body).getString('form.searchBooking.field.term.value') ?? '';
+            this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleEntry']['dateTimeRangeValue'].value = DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleEntry.value') ?? '';
+            this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleEntry']['controller'].text = this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleEntry']['dateTimeRangeValue'].mask;
+            this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleExit']['dateTimeRangeValue'].value = DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.vehicleExit.value') ?? '';
+            this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleExit']['controller'].text = this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleExit']['dateTimeRangeValue'].mask;
+            this._ui['page']['filterBooking']['form']['filterBooking']['field']['orderBy']['controller'].text = DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.orderBy.value') ?? '';
+            this._ui['page']['filterBooking']['form']['filterBooking']['field']['order']['controller'].text = DeepMap(response.body).getString('page.filterBooking.form.filterBooking.field.order.value') ?? '';
 
             this._ui['list']['booking']['pagingController'].addStatusListener((PagingStatus status) => this._bookingListPagingStatusHandler(status));
 
@@ -542,8 +625,16 @@ class _HomePageState extends State<HomePage> {
     this._cancelableTask.cancel();
 
     DeepMap(this._ui).getValue('form.searchBooking.field.term.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.vehicleEntry.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.vehicleExit.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.orderBy.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.order.focusNode')?.dispose();
 
     DeepMap(this._ui).getValue('form.searchBooking.field.term.controller')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.vehicleEntry.controller')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.vehicleExit.controller')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.orderBy.controller')?.dispose();
+    DeepMap(this._ui).getValue('page.filterBooking.form.filterBooking.field.order.controller')?.dispose();
 
     DeepMap(this._ui).getValue('list.booking.scrollController')?.dispose();
 
@@ -563,6 +654,48 @@ class _HomePageState extends State<HomePage> {
 
   }
 
+  Future<void> _openFilterBookingPage(BuildContext context) async {
+
+    final bool? filtered = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return FilterBookingPage(
+            ui: this._ui['page']['filterBooking'],
+          );
+        },
+      ),
+    );
+
+    if (filtered != null) {
+
+      this._ui['list']['booking']['pagingController'].refresh();
+
+    }
+
+  }
+
+  Future<void> _openViewBookingPage(BuildContext context) async {
+
+    final MetaData? metaData = context.findAncestorWidgetOfExactType<MetaData>();
+
+    if (metaData != null) {
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) {
+            return ViewBookingPage(
+              bookingId: metaData.metaData['bookingId'],
+            );
+          },
+        ),
+      );
+
+    }
+
+  }
+
   Future<void> _openAddBookingPage(BuildContext context) async {
 
     final bool? added = await Navigator.push(
@@ -577,6 +710,82 @@ class _HomePageState extends State<HomePage> {
     if (added != null) {
 
       this._ui['list']['booking']['pagingController'].refresh();
+
+    }
+
+  }
+
+  Future<void> _openUpdateBookingPage(BuildContext context) async {
+
+    final MetaData? metaData = context.findAncestorWidgetOfExactType<MetaData>();
+
+    if (metaData != null) {
+
+      final bool? updated = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) {
+            return UpdateBookingPage(
+              bookingId: metaData.metaData['bookingId'],
+            );
+          },
+        ),
+      );
+
+      if (updated != null) {
+
+        this._ui['list']['booking']['pagingController'].refresh();
+
+      }
+
+    }
+
+  }
+
+  Future<void> _openDeleteBookingDialog(BuildContext context) async {
+
+    final MetaData? metaData = context.findAncestorWidgetOfExactType<MetaData>();
+
+    if (metaData != null) {
+
+      final bool? deleted = await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return DeleteBookingDialog(
+            bookingId: metaData.metaData['bookingId'],
+          );
+        },
+      );
+
+      if (deleted != null) {
+
+        this._ui['list']['booking']['pagingController'].refresh();
+
+      }
+
+    }
+
+  }
+
+  Future<void> _bookingItemPopupMenuSelectionHandler(BuildContext context, String value) async {
+
+    switch (value) {
+
+      case 'updateBooking': {
+
+        await this._openUpdateBookingPage(context);
+
+        break;
+
+      }
+      case 'deleteBooking': {
+
+        await this._openDeleteBookingDialog(context);
+
+        break;
+
+      }
 
     }
 
@@ -602,14 +811,10 @@ class _HomePageState extends State<HomePage> {
 
     final req.Request request = req.Request('get', '/garage/booking/list', {
       'term': this._ui['form']['searchBooking']['field']['term']['controller'].text,
-      // 'vehicleEntry': this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleEntry']['dateRange'].value,
-      'vehicleEntry': ' - ',
-      // 'vehicleExit': this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleExit']['dateRange'].value,
-      'vehicleExit': ' - ',
-      // 'orderBy': this._ui['page']['filterBooking']['form']['filterBooking']['field']['orderBy']['controller'].text,
-      'orderBy': 'id',
-      // 'order': this._ui['page']['filterBooking']['form']['filterBooking']['field']['order']['controller'].text,
-      'order': 'desc',
+      'vehicleEntry': this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleEntry']['dateTimeRangeValue'].value,
+      'vehicleExit': this._ui['page']['filterBooking']['form']['filterBooking']['field']['vehicleExit']['dateTimeRangeValue'].value,
+      'orderBy': this._ui['page']['filterBooking']['form']['filterBooking']['field']['orderBy']['controller'].text,
+      'order': this._ui['page']['filterBooking']['form']['filterBooking']['field']['order']['controller'].text,
       'page': pageKey.toString(),
       'pageSize': this._ui['list']['booking']['pageSize'].toString(),
     });
@@ -662,9 +867,9 @@ class _HomePageState extends State<HomePage> {
           }
           case 2: {
 
-            final List<Map<String, dynamic>> item = DeepMap(response.body).getList<Map<String, dynamic>>('item').map<Map<String, dynamic>>((Map<String, dynamic> item) {
+            final List<Map<String, dynamic>> items = DeepMap(response.body).getList<Map<String, dynamic>>('items').map<Map<String, dynamic>>((Map<String, dynamic> item) {
 
-              return {
+              final Map<String, dynamic> _item = {
                 'info': {
                   'bookingId': {
                     'label': DeepMap(item).getString('info.bookingId.label') ?? '',
@@ -676,11 +881,19 @@ class _HomePageState extends State<HomePage> {
                   },
                   'vehicleEntry': {
                     'label': DeepMap(item).getString('info.vehicleEntry.label') ?? '',
-                    'value': DeepMap(item).getString('info.vehicleEntry.value') ?? '',
+                    'dateTimeValue': DateTimeValue(
+                      valueFormat: 'yyyy/M/d H:m',
+                      maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
+                      maskLocale: Localizations.localeOf(this.context).languageCode,
+                    ),
                   },
                   'vehicleExit': {
                     'label': DeepMap(item).getString('info.vehicleExit.label') ?? '',
-                    'value': DeepMap(item).getString('info.vehicleExit.value') ?? '',
+                    'dateTimeValue': DateTimeValue(
+                      valueFormat: 'yyyy/M/d H:m',
+                      maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
+                      maskLocale: Localizations.localeOf(this.context).languageCode,
+                    ),
                   },
                 },
                 'menu': {
@@ -695,15 +908,20 @@ class _HomePageState extends State<HomePage> {
                 },
               };
 
+              _item['info']['vehicleEntry']['dateTimeValue'].value = DeepMap(item).getString('info.vehicleEntry.value') ?? '';
+              _item['info']['vehicleExit']['dateTimeValue'].value = DeepMap(item).getString('info.vehicleExit.value') ?? '';
+
+              return _item;
+
             }).toList();
 
-            if (item.length < this._ui['list']['booking']['pageSize']) {
+            if (items.length < this._ui['list']['booking']['pageSize']) {
 
-              this._ui['list']['booking']['pagingController'].appendLastPage(item);
+              this._ui['list']['booking']['pagingController'].appendLastPage(items);
 
             } else {
 
-              this._ui['list']['booking']['pagingController'].appendPage(item, ++pageKey);
+              this._ui['list']['booking']['pagingController'].appendPage(items, ++pageKey);
 
             }
 
