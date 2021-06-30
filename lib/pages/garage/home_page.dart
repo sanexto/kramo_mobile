@@ -997,7 +997,6 @@ class _HomePageState extends State<HomePage> {
     try {
 
       await storage.delete(key: 'token');
-      await storage.delete(key: 'profile');
 
       deleted = true;
 

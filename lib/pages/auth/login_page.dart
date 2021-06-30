@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../config.dart';
+
 import '../../api/api.dart' as api;
 import '../../api/req/req.dart' as req;
 import '../../api/res/res.dart' as res;
@@ -288,6 +290,7 @@ class _LoginPageState extends State<LoginPage> {
     final req.Request request = req.Request('post', '/auth/login');
 
     request.bodyFields = {
+      'profile': config['app']['profile'],
       'username': this._ui['form']['login']['field']['username']['controller'].text,
       'password': this._ui['form']['login']['field']['password']['controller'].text,
     };
@@ -346,7 +349,6 @@ class _LoginPageState extends State<LoginPage> {
           case 3: {
 
             final String token = DeepMap(response.body).getString('session.token') ?? '';
-            final String profile = DeepMap(response.body).getString('session.profile') ?? '';
 
             final FlutterSecureStorage storage = FlutterSecureStorage();
 
@@ -355,7 +357,6 @@ class _LoginPageState extends State<LoginPage> {
             try {
 
               await storage.write(key: 'token', value: token);
-              await storage.write(key: 'profile', value: profile);
 
               written = true;
 

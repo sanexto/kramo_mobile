@@ -1,6 +1,7 @@
 const Map<String, dynamic> config = {
   'app': {
     'name': 'kramo',
+    'profile': 'garage',
   },
   'api': {
     'scheme': 'http',
