@@ -11,7 +11,7 @@ import '../../../utils/deep_map.dart';
 
 import '../../../widgets/error_box.dart';
 
-import '../../auth/login_page.dart';
+import '../auth/login_page.dart';
 
 class ViewBookingPage extends StatefulWidget {
 

@@ -4,7 +4,7 @@ import 'package:splashscreen/splashscreen.dart';
 
 import '../config.dart';
 
-import './garage/home_page.dart' as garage;
+import './garage/home_page.dart';
 
 class SplashPage extends StatefulWidget {
 
@@ -47,7 +47,7 @@ class _SplashPageState extends State<SplashPage> {
       ),
     );
 
-    return garage.HomePage();
+    return HomePage();
 
   }
 

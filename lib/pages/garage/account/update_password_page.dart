@@ -12,7 +12,7 @@ import '../../../utils/pick_icon.dart';
 
 import '../../../widgets/error_box.dart';
 
-import '../../auth/login_page.dart';
+import '../auth/login_page.dart';
 
 class UpdatePasswordPage extends StatefulWidget {
 

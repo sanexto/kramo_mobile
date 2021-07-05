@@ -16,7 +16,7 @@ import '../../../widgets/error_box.dart';
 import '../../../widgets/date_picker.dart';
 import '../../../widgets/time_picker.dart';
 
-import '../../auth/login_page.dart';
+import '../auth/login_page.dart';
 
 class UpdateBookingPage extends StatefulWidget {
 

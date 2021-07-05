@@ -3,19 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../config.dart';
+import '../../../api/api.dart' as api;
+import '../../../api/req/req.dart' as req;
+import '../../../api/res/res.dart' as res;
 
-import '../../api/api.dart' as api;
-import '../../api/req/req.dart' as req;
-import '../../api/res/res.dart' as res;
+import '../../../utils/cancelable_task.dart';
+import '../../../utils/deep_map.dart';
+import '../../../utils/pick_icon.dart';
 
-import '../../utils/cancelable_task.dart';
-import '../../utils/deep_map.dart';
-import '../../utils/pick_icon.dart';
+import '../../../widgets/error_box.dart';
 
-import '../../widgets/error_box.dart';
-
-import '../garage/home_page.dart' as garage;
+import '../home_page.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -189,7 +187,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _initUi() async {
 
-    final req.Request request = req.Request('get', '/auth/login');
+    final req.Request request = req.Request('get', '/garage/auth/login');
 
     final res.Response response = await api.send(request);
 
@@ -287,10 +285,9 @@ class _LoginPageState extends State<LoginPage> {
 
     this.setState(() {});
 
-    final req.Request request = req.Request('post', '/auth/login');
+    final req.Request request = req.Request('post', '/garage/auth/login');
 
     request.bodyFields = {
-      'profile': config['app']['profile'],
       'username': this._ui['form']['login']['field']['username']['controller'].text,
       'password': this._ui['form']['login']['field']['password']['controller'].text,
     };
@@ -368,7 +365,7 @@ class _LoginPageState extends State<LoginPage> {
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return garage.HomePage();
+                    return HomePage();
                   },
                 ),
                 (Route<dynamic> route) => false,

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../../../../api/api.dart' as api;
-import '../../../../api/req/req.dart' as req;
-import '../../../../api/res/res.dart' as res;
+import '../../../api/api.dart' as api;
+import '../../../api/req/req.dart' as req;
+import '../../../api/res/res.dart' as res;
 
-import '../../../../utils/cancelable_task.dart';
-import '../../../../utils/deep_map.dart';
+import '../../../utils/cancelable_task.dart';
+import '../../../utils/deep_map.dart';
 
-import '../../../../widgets/error_box.dart';
+import '../../../widgets/error_box.dart';
 
-import '../../../../pages/auth/login_page.dart';
+import '../../../pages/garage/auth/login_page.dart';
 
 class DeleteBookingDialog extends StatefulWidget {
 

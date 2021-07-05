@@ -21,13 +21,13 @@ import '../../widgets/error_box.dart';
 
 import '../../dialogs/garage/booking/delete_booking_dialog.dart';
 
-import '../auth/login_page.dart';
 import './booking/filter_booking_page.dart';
 import './booking/view_booking_page.dart';
 import './booking/add_booking_page.dart';
 import './booking/update_booking_page.dart';
 import './account/update_account_page.dart';
 import './account/update_password_page.dart';
+import './auth/login_page.dart';
 
 class HomePage extends StatefulWidget {
 
