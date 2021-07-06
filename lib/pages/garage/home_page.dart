@@ -123,10 +123,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 ListTile(
-                  title: Text(
-                    this._ui['navMenu']['item']['updateAccount']['title'],
-                    overflow: TextOverflow.ellipsis,
-                  ),
                   leading: Container(
                     width: 34.0,
                     alignment: Alignment.center,
@@ -134,13 +130,13 @@ class _HomePageState extends State<HomePage> {
                       pickIcon('user-circle'),
                     ),
                   ),
+                  title: Text(
+                    this._ui['navMenu']['item']['updateAccount']['title'],
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   onTap: () => this._cancelableTask.run('_openUpdateAccountPage', this._openUpdateAccountPage(context)),
                 ),
                 ListTile(
-                  title: Text(
-                    this._ui['navMenu']['item']['updatePassword']['title'],
-                    overflow: TextOverflow.ellipsis,
-                  ),
                   leading: Container(
                     width: 34.0,
                     alignment: Alignment.center,
@@ -148,13 +144,13 @@ class _HomePageState extends State<HomePage> {
                       pickIcon('user-lock'),
                     ),
                   ),
+                  title: Text(
+                    this._ui['navMenu']['item']['updatePassword']['title'],
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   onTap: () => this._cancelableTask.run('_openUpdatePasswordPage', this._openUpdatePasswordPage(context)),
                 ),
                 ListTile(
-                  title: Text(
-                    this._ui['navMenu']['item']['logout']['title'],
-                    overflow: TextOverflow.ellipsis,
-                  ),
                   leading: Container(
                     width: 34.0,
                     alignment: Alignment.center,
@@ -162,12 +158,17 @@ class _HomePageState extends State<HomePage> {
                       pickIcon('power-off'),
                     ),
                   ),
+                  title: Text(
+                    this._ui['navMenu']['item']['logout']['title'],
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   onTap: () => this._cancelableTask.run('_logout', this._logout(context)),
                 ),
               ],
             ),
           ),
           body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 alignment: Alignment.centerRight,
@@ -229,7 +230,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Material(
                             child: InkWell(
-                              child: Container(
+                              child: Padding(
                                 padding: EdgeInsets.all(16.0),
                                 child: Center(
                                   child: Column(
@@ -256,7 +257,7 @@ class _HomePageState extends State<HomePage> {
                         );
                       },
                       noItemsFoundIndicatorBuilder: (BuildContext context) {
-                        return Container(
+                        return Padding(
                           padding: EdgeInsets.all(32.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -305,7 +306,7 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(4.0),
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(4.0),
-                                    child: Container(
+                                    child: Padding(
                                       padding: EdgeInsets.all(16.0),
                                       child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.end,

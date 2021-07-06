@@ -92,7 +92,7 @@ class _UpdatePasswordPageState extends State<UpdatePasswordPage> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  child: Container(
+                  child: Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,7 +186,7 @@ class _UpdatePasswordPageState extends State<UpdatePasswordPage> {
                   ),
                 ),
               ),
-              Container(
+              Padding(
                 padding: EdgeInsets.all(16.0),
                 child: SizedBox(
                   width: double.maxFinite,

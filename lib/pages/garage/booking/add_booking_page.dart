@@ -96,7 +96,7 @@ class _AddBookingPageState extends State<AddBookingPage> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  child: Container(
+                  child: Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,7 +256,7 @@ class _AddBookingPageState extends State<AddBookingPage> {
                   ),
                 ),
               ),
-              Container(
+              Padding(
                 padding: EdgeInsets.all(16.0),
                 child: SizedBox(
                   width: double.maxFinite,

@@ -89,7 +89,7 @@ class _UpdateAccountPageState extends State<UpdateAccountPage> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  child: Container(
+                  child: Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +145,7 @@ class _UpdateAccountPageState extends State<UpdateAccountPage> {
                   ),
                 ),
               ),
-              Container(
+              Padding(
                 padding: EdgeInsets.all(16.0),
                 child: SizedBox(
                   width: double.maxFinite,

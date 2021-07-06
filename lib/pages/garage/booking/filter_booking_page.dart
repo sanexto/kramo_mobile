@@ -77,9 +77,10 @@ class _FilterBookingPageState extends State<FilterBookingPage> {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              child: Container(
+              child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Stack(
                       alignment: Alignment.topRight,
@@ -252,7 +253,7 @@ class _FilterBookingPageState extends State<FilterBookingPage> {
               ),
             ),
           ),
-          Container(
+          Padding(
             padding: EdgeInsets.all(16.0),
             child: SizedBox(
               width: double.maxFinite,
