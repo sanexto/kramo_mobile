@@ -21,7 +21,7 @@ class _ErrorBoxState extends State<ErrorBox> {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return Padding(
       padding: EdgeInsets.all(32.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
