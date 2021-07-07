@@ -14,6 +14,7 @@ import '../../../utils/pick_icon.dart';
 import '../../../widgets/error_box.dart';
 
 import '../home_page.dart';
+import '../auth/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -90,21 +91,27 @@ class _LoginPageState extends State<LoginPage> {
                     minWidth: constraints.maxWidth,
                     minHeight: constraints.maxHeight,
                   ),
-                  child: Container(
-                    padding: EdgeInsets.all(32.0),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 64.0,
+                      horizontal: 32.0,
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          this._ui['title'],
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.headline1!.color,
-                            fontSize: Theme.of(context).primaryTextTheme.headline2!.fontSize,
+                        Center(
+                          child: Text(
+                            this._ui['title'],
+                            style: TextStyle(
+                              color: Theme.of(context).textTheme.headline1!.color,
+                              fontSize: Theme.of(context).primaryTextTheme.headline5!.fontSize,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                         SizedBox(
-                          height: Theme.of(context).primaryTextTheme.headline2!.fontSize,
+                          height: 16.0,
                         ),
                         TextField(
                           autofocus: true,
@@ -166,6 +173,20 @@ class _LoginPageState extends State<LoginPage> {
                               overflow: TextOverflow.ellipsis,
                             ),
                             onPressed: !this._ui['form']['login']['button']['login']['enabled'] ? null : () => this._cancelableTask.run('_login', this._login(context)),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16.0,
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: Theme.of(context).primaryTextTheme.headline2!.fontSize,
+                          child: OutlinedButton(
+                            child: Text(
+                              this._ui['form']['login']['button']['signup']['label'],
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            onPressed: () => this._cancelableTask.run('_openSignupPage', this._openSignupPage(context)),
                           ),
                         ),
                       ],
@@ -234,6 +255,9 @@ class _LoginPageState extends State<LoginPage> {
                 'login': {
                   'label': DeepMap(response.body).getString('form.login.button.login.label') ?? '',
                   'enabled': true,
+                },
+                'signup': {
+                  'label': DeepMap(response.body).getString('form.login.button.signup.label') ?? '',
                 },
               },
             },
@@ -398,6 +422,19 @@ class _LoginPageState extends State<LoginPage> {
     this._ui['form']['login']['button']['login']['enabled'] = true;
 
     this.setState(() {});
+
+  }
+
+  Future<void> _openSignupPage(BuildContext context) async {
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return SignupPage();
+        },
+      ),
+    );
 
   }
 
