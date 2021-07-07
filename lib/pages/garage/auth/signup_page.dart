@@ -51,6 +51,13 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
 
     Widget page = Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).primaryColor,
+        ),
+      ),
       body: Center(
         child: CircularProgressIndicator(),
       ),
@@ -61,6 +68,13 @@ class _SignupPageState extends State<SignupPage> {
       if (this._ui.containsKey('error')) {
 
         page = Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
+            backgroundColor: Colors.transparent,
+            iconTheme: IconThemeData(
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
           body: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return SingleChildScrollView(
@@ -82,6 +96,13 @@ class _SignupPageState extends State<SignupPage> {
       } else {
 
         page = Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
+            backgroundColor: Colors.transparent,
+            iconTheme: IconThemeData(
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
           body: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return SingleChildScrollView(
