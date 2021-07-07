@@ -91,100 +91,108 @@ class _UpdatePasswordPageState extends State<UpdatePasswordPage> {
           body: Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextField(
-                          autofocus: true,
-                          focusNode: this._ui['form']['updatePassword']['field']['currentPassword']['focusNode'],
-                          controller: this._ui['form']['updatePassword']['field']['currentPassword']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updatePassword']['field']['currentPassword']['label'],
-                            hintText: this._ui['form']['updatePassword']['field']['currentPassword']['hint'],
-                            errorText: this._ui['form']['updatePassword']['field']['currentPassword']['error'],
-                            suffixIcon: IconButton(
-                              icon: FaIcon(
-                                this._ui['form']['updatePassword']['field']['currentPassword']['reveal'] ? pickIcon('eye') : pickIcon('eye-slash'),
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: constraints.maxWidth,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextField(
+                                autofocus: true,
+                                focusNode: this._ui['form']['updatePassword']['field']['currentPassword']['focusNode'],
+                                controller: this._ui['form']['updatePassword']['field']['currentPassword']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updatePassword']['field']['currentPassword']['label'],
+                                  hintText: this._ui['form']['updatePassword']['field']['currentPassword']['hint'],
+                                  errorText: this._ui['form']['updatePassword']['field']['currentPassword']['error'],
+                                  suffixIcon: IconButton(
+                                    icon: FaIcon(
+                                      this._ui['form']['updatePassword']['field']['currentPassword']['reveal'] ? pickIcon('eye') : pickIcon('eye-slash'),
+                                    ),
+                                    onPressed: () {
+
+                                      this._ui['form']['updatePassword']['field']['currentPassword']['reveal'] = !this._ui['form']['updatePassword']['field']['currentPassword']['reveal'];
+
+                                      this.setState(() {});
+
+                                    },
+                                  ),
+                                  errorMaxLines: 100,
+                                  filled: true,
+                                ),
+                                obscureText: !this._ui['form']['updatePassword']['field']['currentPassword']['reveal'],
+                                textInputAction: TextInputAction.next,
+                                onEditingComplete: () => this._ui['form']['updatePassword']['field']['newPassword']['focusNode'].requestFocus(),
                               ),
-                              onPressed: () {
-
-                                this._ui['form']['updatePassword']['field']['currentPassword']['reveal'] = !this._ui['form']['updatePassword']['field']['currentPassword']['reveal'];
-
-                                this.setState(() {});
-
-                              },
-                            ),
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          obscureText: !this._ui['form']['updatePassword']['field']['currentPassword']['reveal'],
-                          textInputAction: TextInputAction.next,
-                          onEditingComplete: () => this._ui['form']['updatePassword']['field']['newPassword']['focusNode'].requestFocus(),
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        TextField(
-                          focusNode: this._ui['form']['updatePassword']['field']['newPassword']['focusNode'],
-                          controller: this._ui['form']['updatePassword']['field']['newPassword']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updatePassword']['field']['newPassword']['label'],
-                            hintText: this._ui['form']['updatePassword']['field']['newPassword']['hint'],
-                            errorText: this._ui['form']['updatePassword']['field']['newPassword']['error'],
-                            suffixIcon: IconButton(
-                              icon: FaIcon(
-                                this._ui['form']['updatePassword']['field']['newPassword']['reveal'] ? pickIcon('eye') : pickIcon('eye-slash'),
+                              SizedBox(
+                                height: 8.0,
                               ),
-                              onPressed: () {
+                              TextField(
+                                focusNode: this._ui['form']['updatePassword']['field']['newPassword']['focusNode'],
+                                controller: this._ui['form']['updatePassword']['field']['newPassword']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updatePassword']['field']['newPassword']['label'],
+                                  hintText: this._ui['form']['updatePassword']['field']['newPassword']['hint'],
+                                  errorText: this._ui['form']['updatePassword']['field']['newPassword']['error'],
+                                  suffixIcon: IconButton(
+                                    icon: FaIcon(
+                                      this._ui['form']['updatePassword']['field']['newPassword']['reveal'] ? pickIcon('eye') : pickIcon('eye-slash'),
+                                    ),
+                                    onPressed: () {
 
-                                this._ui['form']['updatePassword']['field']['newPassword']['reveal'] = !this._ui['form']['updatePassword']['field']['newPassword']['reveal'];
+                                      this._ui['form']['updatePassword']['field']['newPassword']['reveal'] = !this._ui['form']['updatePassword']['field']['newPassword']['reveal'];
 
-                                this.setState(() {});
+                                      this.setState(() {});
 
-                              },
-                            ),
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          obscureText: !this._ui['form']['updatePassword']['field']['newPassword']['reveal'],
-                          textInputAction: TextInputAction.next,
-                          onEditingComplete: () => this._ui['form']['updatePassword']['field']['repeatNewPassword']['focusNode'].requestFocus(),
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        TextField(
-                          focusNode: this._ui['form']['updatePassword']['field']['repeatNewPassword']['focusNode'],
-                          controller: this._ui['form']['updatePassword']['field']['repeatNewPassword']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updatePassword']['field']['repeatNewPassword']['label'],
-                            hintText: this._ui['form']['updatePassword']['field']['repeatNewPassword']['hint'],
-                            errorText: this._ui['form']['updatePassword']['field']['repeatNewPassword']['error'],
-                            suffixIcon: IconButton(
-                              icon: FaIcon(
-                                this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'] ? pickIcon('eye') : pickIcon('eye-slash'),
+                                    },
+                                  ),
+                                  errorMaxLines: 100,
+                                  filled: true,
+                                ),
+                                obscureText: !this._ui['form']['updatePassword']['field']['newPassword']['reveal'],
+                                textInputAction: TextInputAction.next,
+                                onEditingComplete: () => this._ui['form']['updatePassword']['field']['repeatNewPassword']['focusNode'].requestFocus(),
                               ),
-                              onPressed: () {
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              TextField(
+                                focusNode: this._ui['form']['updatePassword']['field']['repeatNewPassword']['focusNode'],
+                                controller: this._ui['form']['updatePassword']['field']['repeatNewPassword']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updatePassword']['field']['repeatNewPassword']['label'],
+                                  hintText: this._ui['form']['updatePassword']['field']['repeatNewPassword']['hint'],
+                                  errorText: this._ui['form']['updatePassword']['field']['repeatNewPassword']['error'],
+                                  suffixIcon: IconButton(
+                                    icon: FaIcon(
+                                      this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'] ? pickIcon('eye') : pickIcon('eye-slash'),
+                                    ),
+                                    onPressed: () {
 
-                                this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'] = !this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'];
+                                      this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'] = !this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'];
 
-                                this.setState(() {});
+                                      this.setState(() {});
 
-                              },
-                            ),
-                            errorMaxLines: 100,
-                            filled: true,
+                                    },
+                                  ),
+                                  errorMaxLines: 100,
+                                  filled: true,
+                                ),
+                                obscureText: !this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'],
+                                textInputAction: TextInputAction.done,
+                              ),
+                            ],
                           ),
-                          obscureText: !this._ui['form']['updatePassword']['field']['repeatNewPassword']['reveal'],
-                          textInputAction: TextInputAction.done,
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Padding(

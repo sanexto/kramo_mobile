@@ -24,9 +24,7 @@ class _ErrorBoxState extends State<ErrorBox> {
     return Padding(
       padding: EdgeInsets.all(32.0),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           FaIcon(
             pickIcon('exclamation-circle'),

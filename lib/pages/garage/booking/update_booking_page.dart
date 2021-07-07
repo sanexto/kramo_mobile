@@ -97,165 +97,173 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
           body: Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextField(
-                          focusNode: this._ui['form']['updateBooking']['field']['vehiclePlate']['focusNode'],
-                          controller: this._ui['form']['updateBooking']['field']['vehiclePlate']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updateBooking']['field']['vehiclePlate']['label'],
-                            hintText: this._ui['form']['updateBooking']['field']['vehiclePlate']['hint'],
-                            errorText: this._ui['form']['updateBooking']['field']['vehiclePlate']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          textCapitalization: TextCapitalization.characters,
-                          textInputAction: TextInputAction.next,
-                          onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'].requestFocus(),
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: constraints.maxWidth,
                         ),
-                        SizedBox(
-                          height: 16.0,
-                        ),
-                        Text(
-                          this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['label'],
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.caption!.color,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        TextField(
-                          focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'],
-                          controller: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['label'],
-                            hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['hint'],
-                            errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          readOnly: true,
-                          textInputAction: TextInputAction.next,
-                          onTap: () => this._cancelableTask.run('_openVehicleEntryDatePickerDialog', this._openVehicleEntryDatePickerDialog(context)),
-                          onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'].requestFocus(),
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        TextField(
-                          focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'],
-                          controller: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['label'],
-                            hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['hint'],
-                            errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          readOnly: true,
-                          textInputAction: TextInputAction.next,
-                          onTap: () => this._cancelableTask.run('_openVehicleEntryTimePickerDialog', this._openVehicleEntryTimePickerDialog(context)),
-                          onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'].requestFocus(),
-                        ),
-                        SizedBox(
-                          height: 16.0,
-                        ),
-                        Text(
-                          this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['label'],
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.caption!.color,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        Stack(
-                          alignment: Alignment.topRight,
-                          children: [
-                            TextField(
-                              focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
-                              controller: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['controller'],
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(
-                                  left: 12.0,
-                                  top: 12.0,
-                                  right: 48.0,
-                                  bottom: 12.0,
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextField(
+                                focusNode: this._ui['form']['updateBooking']['field']['vehiclePlate']['focusNode'],
+                                controller: this._ui['form']['updateBooking']['field']['vehiclePlate']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updateBooking']['field']['vehiclePlate']['label'],
+                                  hintText: this._ui['form']['updateBooking']['field']['vehiclePlate']['hint'],
+                                  errorText: this._ui['form']['updateBooking']['field']['vehiclePlate']['error'],
+                                  errorMaxLines: 100,
+                                  filled: true,
                                 ),
-                                labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['label'],
-                                hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['hint'],
-                                errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['error'],
-                                errorMaxLines: 100,
-                                filled: true,
+                                textCapitalization: TextCapitalization.characters,
+                                textInputAction: TextInputAction.next,
+                                onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'].requestFocus(),
                               ),
-                              readOnly: true,
-                              textInputAction: TextInputAction.next,
-                              onTap: () => this._cancelableTask.run('_openVehicleExitDatePickerDialog', this._openVehicleExitDatePickerDialog(context)),
-                              onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
-                            ),
-                            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
-                              padding: EdgeInsets.only(
-                                top: 6.0,
+                              SizedBox(
+                                height: 16.0,
                               ),
-                              child: IconButton(
-                                icon: FaIcon(
-                                  pickIcon('times'),
+                              Text(
+                                this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['label'],
+                                style: TextStyle(
+                                  color: Theme.of(context).textTheme.caption!.color,
                                 ),
-                                color: Colors.black45,
-                                onPressed: () => this._clearVehicleExitDate(),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        Stack(
-                          alignment: Alignment.topRight,
-                          children: [
-                            TextField(
-                              focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
-                              controller: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['controller'],
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(
-                                  left: 12.0,
-                                  top: 12.0,
-                                  right: 48.0,
-                                  bottom: 12.0,
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              TextField(
+                                focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'],
+                                controller: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['label'],
+                                  hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['hint'],
+                                  errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['error'],
+                                  errorMaxLines: 100,
+                                  filled: true,
                                 ),
-                                labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['label'],
-                                hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['hint'],
-                                errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['error'],
-                                errorMaxLines: 100,
-                                filled: true,
+                                readOnly: true,
+                                textInputAction: TextInputAction.next,
+                                onTap: () => this._cancelableTask.run('_openVehicleEntryDatePickerDialog', this._openVehicleEntryDatePickerDialog(context)),
+                                onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'].requestFocus(),
                               ),
-                              readOnly: true,
-                              textInputAction: TextInputAction.done,
-                              onTap: () => this._cancelableTask.run('_openVehicleExitTimePickerDialog', this._openVehicleExitTimePickerDialog(context)),
-                            ),
-                            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
-                              padding: EdgeInsets.only(
-                                top: 6.0,
+                              SizedBox(
+                                height: 8.0,
                               ),
-                              child: IconButton(
-                                icon: FaIcon(
-                                  pickIcon('times'),
+                              TextField(
+                                focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'],
+                                controller: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['label'],
+                                  hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['hint'],
+                                  errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['error'],
+                                  errorMaxLines: 100,
+                                  filled: true,
                                 ),
-                                color: Colors.black45,
-                                onPressed: () => this._clearVehicleExitTime(),
+                                readOnly: true,
+                                textInputAction: TextInputAction.next,
+                                onTap: () => this._cancelableTask.run('_openVehicleEntryTimePickerDialog', this._openVehicleEntryTimePickerDialog(context)),
+                                onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'].requestFocus(),
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 16.0,
+                              ),
+                              Text(
+                                this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['label'],
+                                style: TextStyle(
+                                  color: Theme.of(context).textTheme.caption!.color,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  TextField(
+                                    focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
+                                    controller: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['controller'],
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                        left: 12.0,
+                                        top: 12.0,
+                                        right: 48.0,
+                                        bottom: 12.0,
+                                      ),
+                                      labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['label'],
+                                      hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['hint'],
+                                      errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['error'],
+                                      errorMaxLines: 100,
+                                      filled: true,
+                                    ),
+                                    readOnly: true,
+                                    textInputAction: TextInputAction.next,
+                                    onTap: () => this._cancelableTask.run('_openVehicleExitDatePickerDialog', this._openVehicleExitDatePickerDialog(context)),
+                                    onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
+                                  ),
+                                  this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 6.0,
+                                    ),
+                                    child: IconButton(
+                                      icon: FaIcon(
+                                        pickIcon('times'),
+                                      ),
+                                      color: Colors.black45,
+                                      onPressed: () => this._clearVehicleExitDate(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  TextField(
+                                    focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
+                                    controller: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['controller'],
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                        left: 12.0,
+                                        top: 12.0,
+                                        right: 48.0,
+                                        bottom: 12.0,
+                                      ),
+                                      labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['label'],
+                                      hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['hint'],
+                                      errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['error'],
+                                      errorMaxLines: 100,
+                                      filled: true,
+                                    ),
+                                    readOnly: true,
+                                    textInputAction: TextInputAction.done,
+                                    onTap: () => this._cancelableTask.run('_openVehicleExitTimePickerDialog', this._openVehicleExitTimePickerDialog(context)),
+                                  ),
+                                  this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 6.0,
+                                    ),
+                                    child: IconButton(
+                                      icon: FaIcon(
+                                        pickIcon('times'),
+                                      ),
+                                      color: Colors.black45,
+                                      onPressed: () => this._clearVehicleExitTime(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Padding(

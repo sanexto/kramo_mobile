@@ -76,182 +76,190 @@ class _FilterBookingPageState extends State<FilterBookingPage> {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        TextField(
-                          focusNode: this._ui['form']['filterBooking']['field']['vehicleEntry']['focusNode'],
-                          controller: this._ui['form']['filterBooking']['field']['vehicleEntry']['controller'],
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                              left: 12.0,
-                              top: 12.0,
-                              right: 48.0,
-                              bottom: 12.0,
-                            ),
-                            labelText: this._ui['form']['filterBooking']['field']['vehicleEntry']['label'],
-                            hintText: this._ui['form']['filterBooking']['field']['vehicleEntry']['hint'],
-                            filled: true,
-                          ),
-                          readOnly: true,
-                          textInputAction: TextInputAction.next,
-                          onTap: () => this._cancelableTask.run('_openVehicleEntryDateRangePickerDialog', this._openVehicleEntryDateRangePickerDialog(context)),
-                          onEditingComplete: () => this._ui['form']['filterBooking']['field']['vehicleExit']['focusNode'].requestFocus(),
-                        ),
-                        this._ui['form']['filterBooking']['field']['vehicleEntry']['dateTimeRangeValue'].value == this._ui['form']['filterBooking']['field']['vehicleEntry']['default'] ? SizedBox.shrink() : Padding(
-                          padding: EdgeInsets.only(
-                            top: 6.0,
-                          ),
-                          child: IconButton(
-                            icon: FaIcon(
-                              pickIcon('times'),
-                            ),
-                            color: Colors.black45,
-                            onPressed: () => this._clearVehicleEntryFilter(),
-                          ),
-                        ),
-                      ],
+            child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minWidth: constraints.maxWidth,
                     ),
-                    SizedBox(
-                      height: 8.0,
-                    ),
-                    Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        TextField(
-                          focusNode: this._ui['form']['filterBooking']['field']['vehicleExit']['focusNode'],
-                          controller: this._ui['form']['filterBooking']['field']['vehicleExit']['controller'],
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                              left: 12.0,
-                              top: 12.0,
-                              right: 48.0,
-                              bottom: 12.0,
-                            ),
-                            labelText: this._ui['form']['filterBooking']['field']['vehicleExit']['label'],
-                            hintText: this._ui['form']['filterBooking']['field']['vehicleExit']['hint'],
-                            filled: true,
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              TextField(
+                                focusNode: this._ui['form']['filterBooking']['field']['vehicleEntry']['focusNode'],
+                                controller: this._ui['form']['filterBooking']['field']['vehicleEntry']['controller'],
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                    left: 12.0,
+                                    top: 12.0,
+                                    right: 48.0,
+                                    bottom: 12.0,
+                                  ),
+                                  labelText: this._ui['form']['filterBooking']['field']['vehicleEntry']['label'],
+                                  hintText: this._ui['form']['filterBooking']['field']['vehicleEntry']['hint'],
+                                  filled: true,
+                                ),
+                                readOnly: true,
+                                textInputAction: TextInputAction.next,
+                                onTap: () => this._cancelableTask.run('_openVehicleEntryDateRangePickerDialog', this._openVehicleEntryDateRangePickerDialog(context)),
+                                onEditingComplete: () => this._ui['form']['filterBooking']['field']['vehicleExit']['focusNode'].requestFocus(),
+                              ),
+                              this._ui['form']['filterBooking']['field']['vehicleEntry']['dateTimeRangeValue'].value == this._ui['form']['filterBooking']['field']['vehicleEntry']['default'] ? SizedBox.shrink() : Padding(
+                                padding: EdgeInsets.only(
+                                  top: 6.0,
+                                ),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    pickIcon('times'),
+                                  ),
+                                  color: Colors.black45,
+                                  onPressed: () => this._clearVehicleEntryFilter(),
+                                ),
+                              ),
+                            ],
                           ),
-                          readOnly: true,
-                          textInputAction: TextInputAction.next,
-                          onTap: () => this._cancelableTask.run('_openVehicleExitDateRangePickerDialog', this._openVehicleExitDateRangePickerDialog(context)),
-                          onEditingComplete: () => this._ui['form']['filterBooking']['field']['orderBy']['focusNode'].requestFocus(),
-                        ),
-                        this._ui['form']['filterBooking']['field']['vehicleExit']['dateTimeRangeValue'].value == this._ui['form']['filterBooking']['field']['vehicleExit']['default'] ? SizedBox.shrink() : Padding(
-                          padding: EdgeInsets.only(
-                            top: 6.0,
+                          SizedBox(
+                            height: 8.0,
                           ),
-                          child: IconButton(
-                            icon: FaIcon(
-                              pickIcon('times'),
-                            ),
-                            color: Colors.black45,
-                            onPressed: () => this._clearVehicleExitFilter(),
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              TextField(
+                                focusNode: this._ui['form']['filterBooking']['field']['vehicleExit']['focusNode'],
+                                controller: this._ui['form']['filterBooking']['field']['vehicleExit']['controller'],
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                    left: 12.0,
+                                    top: 12.0,
+                                    right: 48.0,
+                                    bottom: 12.0,
+                                  ),
+                                  labelText: this._ui['form']['filterBooking']['field']['vehicleExit']['label'],
+                                  hintText: this._ui['form']['filterBooking']['field']['vehicleExit']['hint'],
+                                  filled: true,
+                                ),
+                                readOnly: true,
+                                textInputAction: TextInputAction.next,
+                                onTap: () => this._cancelableTask.run('_openVehicleExitDateRangePickerDialog', this._openVehicleExitDateRangePickerDialog(context)),
+                                onEditingComplete: () => this._ui['form']['filterBooking']['field']['orderBy']['focusNode'].requestFocus(),
+                              ),
+                              this._ui['form']['filterBooking']['field']['vehicleExit']['dateTimeRangeValue'].value == this._ui['form']['filterBooking']['field']['vehicleExit']['default'] ? SizedBox.shrink() : Padding(
+                                padding: EdgeInsets.only(
+                                  top: 6.0,
+                                ),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    pickIcon('times'),
+                                  ),
+                                  color: Colors.black45,
+                                  onPressed: () => this._clearVehicleExitFilter(),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8.0,
-                    ),
-                    Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        SelectFormField(
-                          focusNode: this._ui['form']['filterBooking']['field']['orderBy']['focusNode'],
-                          controller: this._ui['form']['filterBooking']['field']['orderBy']['controller'],
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                              left: 12.0,
-                              top: 12.0,
-                              right: 48.0,
-                              bottom: 12.0,
-                            ),
-                            labelText: this._ui['form']['filterBooking']['field']['orderBy']['label'],
-                            hintText: this._ui['form']['filterBooking']['field']['orderBy']['hint'],
-                            filled: true,
+                          SizedBox(
+                            height: 8.0,
                           ),
-                          items: this._ui['form']['filterBooking']['field']['orderBy']['item'].isEmpty ? [{'label': '', 'value': ''}] : this._ui['form']['filterBooking']['field']['orderBy']['item'].map<Map<String, dynamic>>((Map<String, dynamic> item) {
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              SelectFormField(
+                                focusNode: this._ui['form']['filterBooking']['field']['orderBy']['focusNode'],
+                                controller: this._ui['form']['filterBooking']['field']['orderBy']['controller'],
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                    left: 12.0,
+                                    top: 12.0,
+                                    right: 48.0,
+                                    bottom: 12.0,
+                                  ),
+                                  labelText: this._ui['form']['filterBooking']['field']['orderBy']['label'],
+                                  hintText: this._ui['form']['filterBooking']['field']['orderBy']['hint'],
+                                  filled: true,
+                                ),
+                                items: this._ui['form']['filterBooking']['field']['orderBy']['item'].isEmpty ? [{'label': '', 'value': ''}] : this._ui['form']['filterBooking']['field']['orderBy']['item'].map<Map<String, dynamic>>((Map<String, dynamic> item) {
 
-                            return {
-                              'label': item['label'],
-                              'value': item['value'],
-                            };
+                                  return {
+                                    'label': item['label'],
+                                    'value': item['value'],
+                                  };
 
-                          }).toList(),
-                          textInputAction: TextInputAction.next,
-                          onChanged: (String value) => this.setState(() {}),
-                          onEditingComplete: () => this._ui['form']['filterBooking']['field']['order']['focusNode'].requestFocus(),
-                        ),
-                        this._ui['form']['filterBooking']['field']['orderBy']['controller'].text == this._ui['form']['filterBooking']['field']['orderBy']['default'] ? SizedBox.shrink() : Padding(
-                          padding: EdgeInsets.only(
-                            top: 6.0,
+                                }).toList(),
+                                textInputAction: TextInputAction.next,
+                                onChanged: (String value) => this.setState(() {}),
+                                onEditingComplete: () => this._ui['form']['filterBooking']['field']['order']['focusNode'].requestFocus(),
+                              ),
+                              this._ui['form']['filterBooking']['field']['orderBy']['controller'].text == this._ui['form']['filterBooking']['field']['orderBy']['default'] ? SizedBox.shrink() : Padding(
+                                padding: EdgeInsets.only(
+                                  top: 6.0,
+                                ),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    pickIcon('times'),
+                                  ),
+                                  color: Colors.black45,
+                                  onPressed: () => this._clearOrderByFilter(),
+                                ),
+                              ),
+                            ],
                           ),
-                          child: IconButton(
-                            icon: FaIcon(
-                              pickIcon('times'),
-                            ),
-                            color: Colors.black45,
-                            onPressed: () => this._clearOrderByFilter(),
+                          SizedBox(
+                            height: 8.0,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8.0,
-                    ),
-                    Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        SelectFormField(
-                          focusNode: this._ui['form']['filterBooking']['field']['order']['focusNode'],
-                          controller: this._ui['form']['filterBooking']['field']['order']['controller'],
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                              left: 12.0,
-                              top: 12.0,
-                              right: 48.0,
-                              bottom: 12.0,
-                            ),
-                            labelText: this._ui['form']['filterBooking']['field']['order']['label'],
-                            hintText: this._ui['form']['filterBooking']['field']['order']['hint'],
-                            filled: true,
-                          ),
-                          items: this._ui['form']['filterBooking']['field']['order']['item'].isEmpty ? [{'label': '', 'value': ''}] : this._ui['form']['filterBooking']['field']['order']['item'].map<Map<String, dynamic>>((Map<String, dynamic> item) {
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              SelectFormField(
+                                focusNode: this._ui['form']['filterBooking']['field']['order']['focusNode'],
+                                controller: this._ui['form']['filterBooking']['field']['order']['controller'],
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                    left: 12.0,
+                                    top: 12.0,
+                                    right: 48.0,
+                                    bottom: 12.0,
+                                  ),
+                                  labelText: this._ui['form']['filterBooking']['field']['order']['label'],
+                                  hintText: this._ui['form']['filterBooking']['field']['order']['hint'],
+                                  filled: true,
+                                ),
+                                items: this._ui['form']['filterBooking']['field']['order']['item'].isEmpty ? [{'label': '', 'value': ''}] : this._ui['form']['filterBooking']['field']['order']['item'].map<Map<String, dynamic>>((Map<String, dynamic> item) {
 
-                            return {
-                              'label': item['label'],
-                              'value': item['value'],
-                            };
+                                  return {
+                                    'label': item['label'],
+                                    'value': item['value'],
+                                  };
 
-                          }).toList(),
-                          textInputAction: TextInputAction.done,
-                          onChanged: (String value) => this.setState(() {}),
-                        ),
-                        this._ui['form']['filterBooking']['field']['order']['controller'].text == this._ui['form']['filterBooking']['field']['order']['default'] ? SizedBox.shrink() : Padding(
-                          padding: EdgeInsets.only(
-                            top: 6.0,
+                                }).toList(),
+                                textInputAction: TextInputAction.done,
+                                onChanged: (String value) => this.setState(() {}),
+                              ),
+                              this._ui['form']['filterBooking']['field']['order']['controller'].text == this._ui['form']['filterBooking']['field']['order']['default'] ? SizedBox.shrink() : Padding(
+                                padding: EdgeInsets.only(
+                                  top: 6.0,
+                                ),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    pickIcon('times'),
+                                  ),
+                                  color: Colors.black45,
+                                  onPressed: () => this._clearOrderFilter(),
+                                ),
+                              ),
+                            ],
                           ),
-                          child: IconButton(
-                            icon: FaIcon(
-                              pickIcon('times'),
-                            ),
-                            color: Colors.black45,
-                            onPressed: () => this._clearOrderFilter(),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
           ),
           Padding(

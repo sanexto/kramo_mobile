@@ -92,69 +92,77 @@ class _ViewBookingPageState extends State<ViewBookingPage> {
           body: Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Divider(
-                          height: 16.0,
-                          color: Colors.transparent,
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: constraints.maxWidth,
                         ),
-                        Text(
-                          this._ui['bookingInfo']['bookingId']['label'],
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.headline1!.color,
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Divider(
+                                height: 16.0,
+                                color: Colors.transparent,
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['bookingId']['label'],
+                                style: TextStyle(
+                                  color: Theme.of(context).textTheme.headline1!.color,
+                                ),
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['bookingId']['value'],
+                              ),
+                              Divider(
+                                height: 32.0,
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['vehiclePlate']['label'],
+                                style: TextStyle(
+                                  color: Theme.of(context).textTheme.headline1!.color,
+                                ),
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['vehiclePlate']['value'],
+                              ),
+                              Divider(
+                                height: 32.0,
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['vehicleEntry']['label'],
+                                style: TextStyle(
+                                  color: Theme.of(context).textTheme.headline1!.color,
+                                ),
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['vehicleEntry']['dateTimeValue'].mask,
+                              ),
+                              Divider(
+                                height: 32.0,
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['vehicleExit']['label'],
+                                style: TextStyle(
+                                  color: Theme.of(context).textTheme.headline1!.color,
+                                ),
+                              ),
+                              Text(
+                                this._ui['bookingInfo']['vehicleExit']['dateTimeValue'].mask,
+                              ),
+                              Divider(
+                                height: 16.0,
+                                color: Colors.transparent,
+                              ),
+                            ],
                           ),
                         ),
-                        Text(
-                          this._ui['bookingInfo']['bookingId']['value'],
-                        ),
-                        Divider(
-                          height: 32.0,
-                        ),
-                        Text(
-                          this._ui['bookingInfo']['vehiclePlate']['label'],
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.headline1!.color,
-                          ),
-                        ),
-                        Text(
-                          this._ui['bookingInfo']['vehiclePlate']['value'],
-                        ),
-                        Divider(
-                          height: 32.0,
-                        ),
-                        Text(
-                          this._ui['bookingInfo']['vehicleEntry']['label'],
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.headline1!.color,
-                          ),
-                        ),
-                        Text(
-                          this._ui['bookingInfo']['vehicleEntry']['dateTimeValue'].mask,
-                        ),
-                        Divider(
-                          height: 32.0,
-                        ),
-                        Text(
-                          this._ui['bookingInfo']['vehicleExit']['label'],
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.headline1!.color,
-                          ),
-                        ),
-                        Text(
-                          this._ui['bookingInfo']['vehicleExit']['dateTimeValue'].mask,
-                        ),
-                        Divider(
-                          height: 16.0,
-                          color: Colors.transparent,
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

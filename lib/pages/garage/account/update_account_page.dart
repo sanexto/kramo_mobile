@@ -88,62 +88,70 @@ class _UpdateAccountPageState extends State<UpdateAccountPage> {
           body: Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextField(
-                          focusNode: this._ui['form']['updateAccount']['field']['name']['focusNode'],
-                          controller: this._ui['form']['updateAccount']['field']['name']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updateAccount']['field']['name']['label'],
-                            hintText: this._ui['form']['updateAccount']['field']['name']['hint'],
-                            errorText: this._ui['form']['updateAccount']['field']['name']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: constraints.maxWidth,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextField(
+                                focusNode: this._ui['form']['updateAccount']['field']['name']['focusNode'],
+                                controller: this._ui['form']['updateAccount']['field']['name']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updateAccount']['field']['name']['label'],
+                                  hintText: this._ui['form']['updateAccount']['field']['name']['hint'],
+                                  errorText: this._ui['form']['updateAccount']['field']['name']['error'],
+                                  errorMaxLines: 100,
+                                  filled: true,
+                                ),
+                                textCapitalization: TextCapitalization.words,
+                                textInputAction: TextInputAction.next,
+                                onEditingComplete: () => this._ui['form']['updateAccount']['field']['email']['focusNode'].requestFocus(),
+                              ),
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              TextField(
+                                focusNode: this._ui['form']['updateAccount']['field']['email']['focusNode'],
+                                controller: this._ui['form']['updateAccount']['field']['email']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updateAccount']['field']['email']['label'],
+                                  hintText: this._ui['form']['updateAccount']['field']['email']['hint'],
+                                  errorText: this._ui['form']['updateAccount']['field']['email']['error'],
+                                  errorMaxLines: 100,
+                                  filled: true,
+                                ),
+                                keyboardType: TextInputType.emailAddress,
+                                textInputAction: TextInputAction.next,
+                                onEditingComplete: () => this._ui['form']['updateAccount']['field']['username']['focusNode'].requestFocus(),
+                              ),
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              TextField(
+                                focusNode: this._ui['form']['updateAccount']['field']['username']['focusNode'],
+                                controller: this._ui['form']['updateAccount']['field']['username']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['updateAccount']['field']['username']['label'],
+                                  hintText: this._ui['form']['updateAccount']['field']['username']['hint'],
+                                  errorText: this._ui['form']['updateAccount']['field']['username']['error'],
+                                  errorMaxLines: 100,
+                                  filled: true,
+                                ),
+                                textInputAction: TextInputAction.done,
+                              ),
+                            ],
                           ),
-                          textCapitalization: TextCapitalization.words,
-                          textInputAction: TextInputAction.next,
-                          onEditingComplete: () => this._ui['form']['updateAccount']['field']['email']['focusNode'].requestFocus(),
                         ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        TextField(
-                          focusNode: this._ui['form']['updateAccount']['field']['email']['focusNode'],
-                          controller: this._ui['form']['updateAccount']['field']['email']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updateAccount']['field']['email']['label'],
-                            hintText: this._ui['form']['updateAccount']['field']['email']['hint'],
-                            errorText: this._ui['form']['updateAccount']['field']['email']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
-                          onEditingComplete: () => this._ui['form']['updateAccount']['field']['username']['focusNode'].requestFocus(),
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        TextField(
-                          focusNode: this._ui['form']['updateAccount']['field']['username']['focusNode'],
-                          controller: this._ui['form']['updateAccount']['field']['username']['controller'],
-                          decoration: InputDecoration(
-                            labelText: this._ui['form']['updateAccount']['field']['username']['label'],
-                            hintText: this._ui['form']['updateAccount']['field']['username']['hint'],
-                            errorText: this._ui['form']['updateAccount']['field']['username']['error'],
-                            errorMaxLines: 100,
-                            filled: true,
-                          ),
-                          textInputAction: TextInputAction.done,
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Padding(
