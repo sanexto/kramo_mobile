@@ -168,7 +168,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 alignment: Alignment.centerRight,
