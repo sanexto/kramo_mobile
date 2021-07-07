@@ -58,13 +58,13 @@ class _FilterBookingPageState extends State<FilterBookingPage> {
                   horizontal: 16.0,
                 ),
                 child: TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Theme.of(context).primaryTextTheme.headline6!.color,
-                  ),
                   child: Text(
                     this._ui['actionMenu']['item']['clearFilter']['title'],
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
+                  ),
+                  style: TextButton.styleFrom(
+                    primary: Theme.of(context).primaryTextTheme.headline6!.color,
                   ),
                   onPressed: () => this._clearFilter(),
                 ),
