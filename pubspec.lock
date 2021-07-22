@@ -85,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  facebook_app_events:
+    dependency: "direct main"
+    description:
+      name: facebook_app_events
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.12.0"
   fake_async:
     dependency: transitive
     description:
@@ -162,7 +169,7 @@ packages:
       name: infinite_scroll_pagination
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1+1"
+    version: "3.1.0"
   intl:
     dependency: transitive
     description:
@@ -211,7 +218,7 @@ packages:
       name: select_form_field
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "2.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -303,4 +310,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.26.0-17.6.pre"
+  flutter: ">=2.0.0"
