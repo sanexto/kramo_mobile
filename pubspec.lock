@@ -15,13 +15,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.0"
-  ars_dialog:
-    dependency: "direct main"
-    description:
-      name: ars_dialog
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.8"
   async:
     dependency: transitive
     description:
@@ -184,6 +177,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  ndialog:
+    dependency: "direct main"
+    description:
+      name: ndialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.0"
   path:
     dependency: transitive
     description:

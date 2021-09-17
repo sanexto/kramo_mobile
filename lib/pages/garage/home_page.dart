@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ars_dialog/ars_dialog.dart';
+import 'package:ndialog/ndialog.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../api/api.dart' as api;
@@ -982,10 +982,9 @@ class _HomePageState extends State<HomePage> {
 
     final CustomProgressDialog progressDialog = CustomProgressDialog(
       context,
-      blur: 2,
+      blur: 1,
       dismissable: false,
       loadingWidget: SizedBox.shrink(),
-      transitionDuration: Duration.zero,
     );
 
     progressDialog.show();
