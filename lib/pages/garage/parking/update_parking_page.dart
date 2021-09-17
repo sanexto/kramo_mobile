@@ -18,18 +18,18 @@ import '../../../widgets/time_picker.dart';
 
 import '../auth/login_page.dart';
 
-class UpdateBookingPage extends StatefulWidget {
+class UpdateParkingPage extends StatefulWidget {
 
-  final int bookingId;
+  final int parkingId;
 
-  UpdateBookingPage({Key? key, required this.bookingId}) : super(key: key);
+  UpdateParkingPage({Key? key, required this.parkingId}) : super(key: key);
 
   @override
-  _UpdateBookingPageState createState() => _UpdateBookingPageState();
+  _UpdateParkingPageState createState() => _UpdateParkingPageState();
 
 }
 
-class _UpdateBookingPageState extends State<UpdateBookingPage> {
+class _UpdateParkingPageState extends State<UpdateParkingPage> {
 
   final CancelableTask _cancelableTask = CancelableTask();
   Map<String, dynamic> _ui = {};
@@ -110,24 +110,24 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextField(
-                                focusNode: this._ui['form']['updateBooking']['field']['vehiclePlate']['focusNode'],
-                                controller: this._ui['form']['updateBooking']['field']['vehiclePlate']['controller'],
+                                focusNode: this._ui['form']['updateParking']['field']['vehiclePlate']['focusNode'],
+                                controller: this._ui['form']['updateParking']['field']['vehiclePlate']['controller'],
                                 decoration: InputDecoration(
-                                  labelText: this._ui['form']['updateBooking']['field']['vehiclePlate']['label'],
-                                  hintText: this._ui['form']['updateBooking']['field']['vehiclePlate']['hint'],
-                                  errorText: this._ui['form']['updateBooking']['field']['vehiclePlate']['error'],
+                                  labelText: this._ui['form']['updateParking']['field']['vehiclePlate']['label'],
+                                  hintText: this._ui['form']['updateParking']['field']['vehiclePlate']['hint'],
+                                  errorText: this._ui['form']['updateParking']['field']['vehiclePlate']['error'],
                                   errorMaxLines: 100,
                                   filled: true,
                                 ),
                                 textCapitalization: TextCapitalization.characters,
                                 textInputAction: TextInputAction.next,
-                                onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'].requestFocus(),
+                                onEditingComplete: () => this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'].requestFocus(),
                               ),
                               SizedBox(
                                 height: 16.0,
                               ),
                               Text(
-                                this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['label'],
+                                this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.caption!.color,
                                 ),
@@ -136,43 +136,43 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                                 height: 8.0,
                               ),
                               TextField(
-                                focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'],
-                                controller: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'],
+                                focusNode: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'],
+                                controller: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['controller'],
                                 decoration: InputDecoration(
-                                  labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['label'],
-                                  hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['hint'],
-                                  errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['error'],
+                                  labelText: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['label'],
+                                  hintText: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['hint'],
+                                  errorText: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['error'],
                                   errorMaxLines: 100,
                                   filled: true,
                                 ),
                                 readOnly: true,
                                 textInputAction: TextInputAction.next,
                                 onTap: () => this._cancelableTask.run('_openVehicleEntryDatePickerDialog', this._openVehicleEntryDatePickerDialog(context)),
-                                onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'].requestFocus(),
+                                onEditingComplete: () => this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'].requestFocus(),
                               ),
                               SizedBox(
                                 height: 8.0,
                               ),
                               TextField(
-                                focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'],
-                                controller: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'],
+                                focusNode: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'],
+                                controller: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['controller'],
                                 decoration: InputDecoration(
-                                  labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['label'],
-                                  hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['hint'],
-                                  errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['error'],
+                                  labelText: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['label'],
+                                  hintText: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['hint'],
+                                  errorText: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['error'],
                                   errorMaxLines: 100,
                                   filled: true,
                                 ),
                                 readOnly: true,
                                 textInputAction: TextInputAction.next,
                                 onTap: () => this._cancelableTask.run('_openVehicleEntryTimePickerDialog', this._openVehicleEntryTimePickerDialog(context)),
-                                onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'].requestFocus(),
+                                onEditingComplete: () => this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['focusNode'].requestFocus(),
                               ),
                               SizedBox(
                                 height: 16.0,
                               ),
                               Text(
-                                this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['label'],
+                                this._ui['form']['updateParking']['fieldSet']['vehicleExit']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.caption!.color,
                                 ),
@@ -184,8 +184,8 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                                 alignment: Alignment.topRight,
                                 children: [
                                   TextField(
-                                    focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
-                                    controller: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['controller'],
+                                    focusNode: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
+                                    controller: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['controller'],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                         left: 12.0,
@@ -193,18 +193,18 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                                         right: 48.0,
                                         bottom: 12.0,
                                       ),
-                                      labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['label'],
-                                      hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['hint'],
-                                      errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['error'],
+                                      labelText: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['label'],
+                                      hintText: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['hint'],
+                                      errorText: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['error'],
                                       errorMaxLines: 100,
                                       filled: true,
                                     ),
                                     readOnly: true,
                                     textInputAction: TextInputAction.next,
                                     onTap: () => this._cancelableTask.run('_openVehicleExitDatePickerDialog', this._openVehicleExitDatePickerDialog(context)),
-                                    onEditingComplete: () => this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
+                                    onEditingComplete: () => this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
                                   ),
-                                  this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                                  this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
                                     padding: EdgeInsets.only(
                                       top: 6.0,
                                     ),
@@ -225,8 +225,8 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                                 alignment: Alignment.topRight,
                                 children: [
                                   TextField(
-                                    focusNode: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
-                                    controller: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['controller'],
+                                    focusNode: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
+                                    controller: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['controller'],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                         left: 12.0,
@@ -234,9 +234,9 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                                         right: 48.0,
                                         bottom: 12.0,
                                       ),
-                                      labelText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['label'],
-                                      hintText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['hint'],
-                                      errorText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['error'],
+                                      labelText: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['label'],
+                                      hintText: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['hint'],
+                                      errorText: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['error'],
                                       errorMaxLines: 100,
                                       filled: true,
                                     ),
@@ -244,7 +244,7 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                                     textInputAction: TextInputAction.done,
                                     onTap: () => this._cancelableTask.run('_openVehicleExitTimePickerDialog', this._openVehicleExitTimePickerDialog(context)),
                                   ),
-                                  this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                                  this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
                                     padding: EdgeInsets.only(
                                       top: 6.0,
                                     ),
@@ -273,10 +273,10 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
                   height: Theme.of(context).primaryTextTheme.headline2!.fontSize,
                   child: ElevatedButton(
                     child: Text(
-                      this._ui['form']['updateBooking']['button']['update']['label'],
+                      this._ui['form']['updateParking']['button']['update']['label'],
                       overflow: TextOverflow.ellipsis,
                     ),
-                    onPressed: !this._ui['form']['updateBooking']['button']['update']['enabled'] ? null : () => this._cancelableTask.run('_updateBooking', this._updateBooking(context)),
+                    onPressed: !this._ui['form']['updateParking']['button']['update']['enabled'] ? null : () => this._cancelableTask.run('_updateParking', this._updateParking(context)),
                   ),
                 ),
               ),
@@ -294,7 +294,7 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
   Future<void> _initUi() async {
 
-    final req.Request request = req.Request('get', '/garage/booking/update/${this.widget.bookingId}');
+    final req.Request request = req.Request('get', '/garage/parking/update/${this.widget.parkingId}');
 
     final res.Response response = await api.send(request);
 
@@ -352,83 +352,83 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
             this._ui = {
               'title': DeepMap(response.body).getString('title') ?? '',
               'form': {
-                'updateBooking': {
+                'updateParking': {
                   'field': {
                     'vehiclePlate': {
                       'focusNode': FocusNode(),
                       'controller': TextEditingController(),
-                      'label': DeepMap(response.body).getString('form.updateBooking.field.vehiclePlate.label') ?? '',
-                      'hint': DeepMap(response.body).getString('form.updateBooking.field.vehiclePlate.hint') ?? '',
+                      'label': DeepMap(response.body).getString('form.updateParking.field.vehiclePlate.label') ?? '',
+                      'hint': DeepMap(response.body).getString('form.updateParking.field.vehiclePlate.hint') ?? '',
                       'error': null,
                     },
                   },
                   'fieldSet': {
                     'vehicleEntry': {
-                      'label': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.label') ?? '',
+                      'label': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.label') ?? '',
                       'field': {
                         'date': {
                           'focusNode': FocusNode(),
                           'controller': TextEditingController(),
-                          'label': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.date.label') ?? '',
-                          'hint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.date.hint') ?? '',
+                          'label': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.date.label') ?? '',
+                          'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.date.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
                             valueFormat: 'yyyy/M/d',
                             maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
-                          'pickerHint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.date.pickerHint') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.date.pickerHint') ?? '',
                         },
                         'time': {
                           'focusNode': FocusNode(),
                           'controller': TextEditingController(),
-                          'label': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.time.label') ?? '',
-                          'hint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.time.hint') ?? '',
+                          'label': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.time.label') ?? '',
+                          'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.time.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
                             valueFormat: 'H:m',
                             maskFormat: 'HH:mm',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
-                          'pickerHint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.time.pickerHint') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.time.pickerHint') ?? '',
                         },
                       },
                     },
                     'vehicleExit': {
-                      'label': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.label') ?? '',
+                      'label': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.label') ?? '',
                       'field': {
                         'date': {
                           'focusNode': FocusNode(),
                           'controller': TextEditingController(),
-                          'label': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.date.label') ?? '',
-                          'hint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.date.hint') ?? '',
+                          'label': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.date.label') ?? '',
+                          'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.date.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
                             valueFormat: 'yyyy/M/d',
                             maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
-                          'pickerHint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.date.pickerHint') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.date.pickerHint') ?? '',
                         },
                         'time': {
                           'focusNode': FocusNode(),
                           'controller': TextEditingController(),
-                          'label': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.time.label') ?? '',
-                          'hint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.time.hint') ?? '',
+                          'label': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.time.label') ?? '',
+                          'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.time.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
                             valueFormat: 'H:m',
                             maskFormat: 'HH:mm',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
-                          'pickerHint': DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.time.pickerHint') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.time.pickerHint') ?? '',
                         },
                       },
                     },
                   },
                   'button': {
                     'update': {
-                      'label': DeepMap(response.body).getString('form.updateBooking.button.update.label') ?? '',
+                      'label': DeepMap(response.body).getString('form.updateParking.button.update.label') ?? '',
                       'enabled': true,
                     },
                   },
@@ -436,15 +436,15 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
               },
             };
 
-            this._ui['form']['updateBooking']['field']['vehiclePlate']['controller'].text = DeepMap(response.body).getString('form.updateBooking.field.vehiclePlate.value') ?? '';
-            this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.date.value') ?? '';
-            this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
-            this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleEntry.field.time.value') ?? '';
-            this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
-            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.date.value') ?? '';
-            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
-            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateBooking.fieldSet.vehicleExit.field.time.value') ?? '';
-            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
+            this._ui['form']['updateParking']['field']['vehiclePlate']['controller'].text = DeepMap(response.body).getString('form.updateParking.field.vehiclePlate.value') ?? '';
+            this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.date.value') ?? '';
+            this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
+            this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleEntry.field.time.value') ?? '';
+            this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
+            this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.date.value') ?? '';
+            this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
+            this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.updateParking.fieldSet.vehicleExit.field.time.value') ?? '';
+            this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
 
             break;
 
@@ -466,17 +466,17 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
     this._cancelableTask.cancel();
 
-    DeepMap(this._ui).getValue('form.updateBooking.field.vehiclePlate.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleEntry.field.date.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleEntry.field.time.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleExit.field.date.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleExit.field.time.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.field.vehiclePlate.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleEntry.field.date.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleEntry.field.time.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleExit.field.date.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleExit.field.time.focusNode')?.dispose();
 
-    DeepMap(this._ui).getValue('form.updateBooking.field.vehiclePlate.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleEntry.field.date.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleEntry.field.time.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleExit.field.date.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.updateBooking.fieldSet.vehicleExit.field.time.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.field.vehiclePlate.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleEntry.field.date.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleEntry.field.time.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleExit.field.date.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.updateParking.fieldSet.vehicleExit.field.time.controller')?.dispose();
 
     this._ui = {};
 
@@ -496,14 +496,14 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
     final DateTime? pickedDate = await DatePicker.show(
       context: context,
-      initialDate: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime,
-      fieldHintText: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['pickerHint'],
+      initialDate: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime,
+      fieldHintText: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['pickerHint'],
     );
 
     if (pickedDate != null) {
 
-      this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime = pickedDate;
-      this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
+      this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime = pickedDate;
+      this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
 
     }
 
@@ -513,13 +513,13 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
     final DateTime? pickedTime = await TimePicker.show(
       context: context,
-      initialTime: this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime,
+      initialTime: this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime,
     );
 
     if (pickedTime != null) {
 
-      this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime = pickedTime;
-      this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
+      this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime = pickedTime;
+      this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
 
     }
 
@@ -529,14 +529,14 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
     final DateTime? pickedDate = await DatePicker.show(
       context: context,
-      initialDate: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime,
-      fieldHintText: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['pickerHint'],
+      initialDate: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime,
+      fieldHintText: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['pickerHint'],
     );
 
     if (pickedDate != null) {
 
-      this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime = pickedDate;
-      this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
+      this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime = pickedDate;
+      this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
 
       this.setState(() {});
 
@@ -548,13 +548,13 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
     final DateTime? pickedTime = await TimePicker.show(
       context: context,
-      initialTime: this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime,
+      initialTime: this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime,
     );
 
     if (pickedTime != null) {
 
-      this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime = pickedTime;
-      this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
+      this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime = pickedTime;
+      this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
 
       this.setState(() {});
 
@@ -564,8 +564,8 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
   void _clearVehicleExitDate() {
 
-    this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = '';
-    this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
+    this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = '';
+    this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
 
     this.setState(() {});
 
@@ -573,32 +573,32 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
   void _clearVehicleExitTime() {
 
-    this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = '';
-    this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
+    this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = '';
+    this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
 
     this.setState(() {});
 
   }
 
-  Future<void> _updateBooking(BuildContext context) async {
+  Future<void> _updateParking(BuildContext context) async {
 
-    this._ui['form']['updateBooking']['button']['update']['enabled'] = false;
-    this._ui['form']['updateBooking']['field']['vehiclePlate']['error'] = null;
-    this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['error'] = null;
-    this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['error'] = null;
-    this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['error'] = null;
-    this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['error'] = null;
+    this._ui['form']['updateParking']['button']['update']['enabled'] = false;
+    this._ui['form']['updateParking']['field']['vehiclePlate']['error'] = null;
+    this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['error'] = null;
+    this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['error'] = null;
+    this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['error'] = null;
+    this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['error'] = null;
 
     this.setState(() {});
 
-    final req.Request request = req.Request('put', '/garage/booking/update/${this.widget.bookingId}');
+    final req.Request request = req.Request('put', '/garage/parking/update/${this.widget.parkingId}');
 
     request.bodyFields = {
-      'vehiclePlate': this._ui['form']['updateBooking']['field']['vehiclePlate']['controller'].text,
-      'vehicleEntryDate': this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value,
-      'vehicleEntryTime': this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value,
-      'vehicleExitDate': this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value,
-      'vehicleExitTime': this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value,
+      'vehiclePlate': this._ui['form']['updateParking']['field']['vehiclePlate']['controller'].text,
+      'vehicleEntryDate': this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value,
+      'vehicleEntryTime': this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value,
+      'vehicleExitDate': this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value,
+      'vehicleExitTime': this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value,
     };
 
     final res.Response response = await api.send(request);
@@ -649,11 +649,11 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
           case 1: {
 
-            this._ui['form']['updateBooking']['field']['vehiclePlate']['error'] = DeepMap(field).getString('vehiclePlate.message');
-            this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['date']['error'] = DeepMap(field).getString('vehicleEntryDate.message');
-            this._ui['form']['updateBooking']['fieldSet']['vehicleEntry']['field']['time']['error'] = DeepMap(field).getString('vehicleEntryTime.message');
-            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['date']['error'] = DeepMap(field).getString('vehicleExitDate.message');
-            this._ui['form']['updateBooking']['fieldSet']['vehicleExit']['field']['time']['error'] = DeepMap(field).getString('vehicleExitTime.message');
+            this._ui['form']['updateParking']['field']['vehiclePlate']['error'] = DeepMap(field).getString('vehiclePlate.message');
+            this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['date']['error'] = DeepMap(field).getString('vehicleEntryDate.message');
+            this._ui['form']['updateParking']['fieldSet']['vehicleEntry']['field']['time']['error'] = DeepMap(field).getString('vehicleEntryTime.message');
+            this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['date']['error'] = DeepMap(field).getString('vehicleExitDate.message');
+            this._ui['form']['updateParking']['fieldSet']['vehicleExit']['field']['time']['error'] = DeepMap(field).getString('vehicleExitTime.message');
 
             break;
 
@@ -687,7 +687,7 @@ class _UpdateBookingPageState extends State<UpdateBookingPage> {
 
     }
 
-    this._ui['form']['updateBooking']['button']['update']['enabled'] = true;
+    this._ui['form']['updateParking']['button']['update']['enabled'] = true;
 
     this.setState(() {});
 

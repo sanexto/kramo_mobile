@@ -18,16 +18,16 @@ import '../../../widgets/time_picker.dart';
 
 import '../auth/login_page.dart';
 
-class AddBookingPage extends StatefulWidget {
+class AddParkingPage extends StatefulWidget {
 
-  AddBookingPage({Key? key}) : super(key: key);
+  AddParkingPage({Key? key}) : super(key: key);
 
   @override
-  _AddBookingPageState createState() => _AddBookingPageState();
+  _AddParkingPageState createState() => _AddParkingPageState();
 
 }
 
-class _AddBookingPageState extends State<AddBookingPage> {
+class _AddParkingPageState extends State<AddParkingPage> {
 
   final CancelableTask _cancelableTask = CancelableTask();
   Map<String, dynamic> _ui = {};
@@ -109,24 +109,24 @@ class _AddBookingPageState extends State<AddBookingPage> {
                             children: [
                               TextField(
                                 autofocus: true,
-                                focusNode: this._ui['form']['addBooking']['field']['vehiclePlate']['focusNode'],
-                                controller: this._ui['form']['addBooking']['field']['vehiclePlate']['controller'],
+                                focusNode: this._ui['form']['addParking']['field']['vehiclePlate']['focusNode'],
+                                controller: this._ui['form']['addParking']['field']['vehiclePlate']['controller'],
                                 decoration: InputDecoration(
-                                  labelText: this._ui['form']['addBooking']['field']['vehiclePlate']['label'],
-                                  hintText: this._ui['form']['addBooking']['field']['vehiclePlate']['hint'],
-                                  errorText: this._ui['form']['addBooking']['field']['vehiclePlate']['error'],
+                                  labelText: this._ui['form']['addParking']['field']['vehiclePlate']['label'],
+                                  hintText: this._ui['form']['addParking']['field']['vehiclePlate']['hint'],
+                                  errorText: this._ui['form']['addParking']['field']['vehiclePlate']['error'],
                                   errorMaxLines: 100,
                                   filled: true,
                                 ),
                                 textCapitalization: TextCapitalization.characters,
                                 textInputAction: TextInputAction.next,
-                                onEditingComplete: () => this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'].requestFocus(),
+                                onEditingComplete: () => this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'].requestFocus(),
                               ),
                               SizedBox(
                                 height: 16.0,
                               ),
                               Text(
-                                this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['label'],
+                                this._ui['form']['addParking']['fieldSet']['vehicleEntry']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.caption!.color,
                                 ),
@@ -135,43 +135,43 @@ class _AddBookingPageState extends State<AddBookingPage> {
                                 height: 8.0,
                               ),
                               TextField(
-                                focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'],
-                                controller: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'],
+                                focusNode: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['focusNode'],
+                                controller: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['controller'],
                                 decoration: InputDecoration(
-                                  labelText: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['label'],
-                                  hintText: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['hint'],
-                                  errorText: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['error'],
+                                  labelText: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['label'],
+                                  hintText: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['hint'],
+                                  errorText: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['error'],
                                   errorMaxLines: 100,
                                   filled: true,
                                 ),
                                 readOnly: true,
                                 textInputAction: TextInputAction.next,
                                 onTap: () => this._cancelableTask.run('_openVehicleEntryDatePickerDialog', this._openVehicleEntryDatePickerDialog(context)),
-                                onEditingComplete: () => this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'].requestFocus(),
+                                onEditingComplete: () => this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'].requestFocus(),
                               ),
                               SizedBox(
                                 height: 8.0,
                               ),
                               TextField(
-                                focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'],
-                                controller: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'],
+                                focusNode: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['focusNode'],
+                                controller: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['controller'],
                                 decoration: InputDecoration(
-                                  labelText: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['label'],
-                                  hintText: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['hint'],
-                                  errorText: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['error'],
+                                  labelText: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['label'],
+                                  hintText: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['hint'],
+                                  errorText: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['error'],
                                   errorMaxLines: 100,
                                   filled: true,
                                 ),
                                 readOnly: true,
                                 textInputAction: TextInputAction.next,
                                 onTap: () => this._cancelableTask.run('_openVehicleEntryTimePickerDialog', this._openVehicleEntryTimePickerDialog(context)),
-                                onEditingComplete: () => this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'].requestFocus(),
+                                onEditingComplete: () => this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['focusNode'].requestFocus(),
                               ),
                               SizedBox(
                                 height: 16.0,
                               ),
                               Text(
-                                this._ui['form']['addBooking']['fieldSet']['vehicleExit']['label'],
+                                this._ui['form']['addParking']['fieldSet']['vehicleExit']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.caption!.color,
                                 ),
@@ -183,8 +183,8 @@ class _AddBookingPageState extends State<AddBookingPage> {
                                 alignment: Alignment.topRight,
                                 children: [
                                   TextField(
-                                    focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
-                                    controller: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'],
+                                    focusNode: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['focusNode'],
+                                    controller: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['controller'],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                         left: 12.0,
@@ -192,18 +192,18 @@ class _AddBookingPageState extends State<AddBookingPage> {
                                         right: 48.0,
                                         bottom: 12.0,
                                       ),
-                                      labelText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['label'],
-                                      hintText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['hint'],
-                                      errorText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['error'],
+                                      labelText: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['label'],
+                                      hintText: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['hint'],
+                                      errorText: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['error'],
                                       errorMaxLines: 100,
                                       filled: true,
                                     ),
                                     readOnly: true,
                                     textInputAction: TextInputAction.next,
                                     onTap: () => this._cancelableTask.run('_openVehicleExitDatePickerDialog', this._openVehicleExitDatePickerDialog(context)),
-                                    onEditingComplete: () => this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
+                                    onEditingComplete: () => this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['focusNode'].requestFocus(),
                                   ),
-                                  this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                                  this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
                                     padding: EdgeInsets.only(
                                       top: 6.0,
                                     ),
@@ -224,8 +224,8 @@ class _AddBookingPageState extends State<AddBookingPage> {
                                 alignment: Alignment.topRight,
                                 children: [
                                   TextField(
-                                    focusNode: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
-                                    controller: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'],
+                                    focusNode: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['focusNode'],
+                                    controller: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['controller'],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                         left: 12.0,
@@ -233,9 +233,9 @@ class _AddBookingPageState extends State<AddBookingPage> {
                                         right: 48.0,
                                         bottom: 12.0,
                                       ),
-                                      labelText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['label'],
-                                      hintText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['hint'],
-                                      errorText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['error'],
+                                      labelText: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['label'],
+                                      hintText: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['hint'],
+                                      errorText: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['error'],
                                       errorMaxLines: 100,
                                       filled: true,
                                     ),
@@ -243,7 +243,7 @@ class _AddBookingPageState extends State<AddBookingPage> {
                                     textInputAction: TextInputAction.done,
                                     onTap: () => this._cancelableTask.run('_openVehicleExitTimePickerDialog', this._openVehicleExitTimePickerDialog(context)),
                                   ),
-                                  this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
+                                  this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
                                     padding: EdgeInsets.only(
                                       top: 6.0,
                                     ),
@@ -272,10 +272,10 @@ class _AddBookingPageState extends State<AddBookingPage> {
                   height: Theme.of(context).primaryTextTheme.headline2!.fontSize,
                   child: ElevatedButton(
                     child: Text(
-                      this._ui['form']['addBooking']['button']['add']['label'],
+                      this._ui['form']['addParking']['button']['add']['label'],
                       overflow: TextOverflow.ellipsis,
                     ),
-                    onPressed: !this._ui['form']['addBooking']['button']['add']['enabled'] ? null : () => this._cancelableTask.run('_addBooking', this._addBooking(context)),
+                    onPressed: !this._ui['form']['addParking']['button']['add']['enabled'] ? null : () => this._cancelableTask.run('_addParking', this._addParking(context)),
                   ),
                 ),
               ),
@@ -293,7 +293,7 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
   Future<void> _initUi() async {
 
-    final req.Request request = req.Request('get', '/garage/booking/add');
+    final req.Request request = req.Request('get', '/garage/parking/add');
 
     final res.Response response = await api.send(request);
 
@@ -334,83 +334,83 @@ class _AddBookingPageState extends State<AddBookingPage> {
         this._ui = {
           'title': DeepMap(response.body).getString('title') ?? '',
           'form': {
-            'addBooking': {
+            'addParking': {
               'field': {
                 'vehiclePlate': {
                   'focusNode': FocusNode(),
                   'controller': TextEditingController(),
-                  'label': DeepMap(response.body).getString('form.addBooking.field.vehiclePlate.label') ?? '',
-                  'hint': DeepMap(response.body).getString('form.addBooking.field.vehiclePlate.hint') ?? '',
+                  'label': DeepMap(response.body).getString('form.addParking.field.vehiclePlate.label') ?? '',
+                  'hint': DeepMap(response.body).getString('form.addParking.field.vehiclePlate.hint') ?? '',
                   'error': null,
                 },
               },
               'fieldSet': {
                 'vehicleEntry': {
-                  'label': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.label') ?? '',
+                  'label': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.label') ?? '',
                   'field': {
                     'date': {
                       'focusNode': FocusNode(),
                       'controller': TextEditingController(),
-                      'label': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.date.label') ?? '',
-                      'hint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.date.hint') ?? '',
+                      'label': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.date.label') ?? '',
+                      'hint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.date.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
                         valueFormat: 'yyyy/M/d',
                         maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
-                      'pickerHint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.date.pickerHint') ?? '',
+                      'pickerHint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.date.pickerHint') ?? '',
                     },
                     'time': {
                       'focusNode': FocusNode(),
                       'controller': TextEditingController(),
-                      'label': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.time.label') ?? '',
-                      'hint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.time.hint') ?? '',
+                      'label': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.time.label') ?? '',
+                      'hint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.time.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
                         valueFormat: 'H:m',
                         maskFormat: 'HH:mm',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
-                      'pickerHint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.time.pickerHint') ?? '',
+                      'pickerHint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.time.pickerHint') ?? '',
                     },
                   },
                 },
                 'vehicleExit': {
-                  'label': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.label') ?? '',
+                  'label': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.label') ?? '',
                   'field': {
                     'date': {
                       'focusNode': FocusNode(),
                       'controller': TextEditingController(),
-                      'label': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.date.label') ?? '',
-                      'hint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.date.hint') ?? '',
+                      'label': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.date.label') ?? '',
+                      'hint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.date.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
                         valueFormat: 'yyyy/M/d',
                         maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
-                      'pickerHint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.date.pickerHint') ?? '',
+                      'pickerHint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.date.pickerHint') ?? '',
                     },
                     'time': {
                       'focusNode': FocusNode(),
                       'controller': TextEditingController(),
-                      'label': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.time.label') ?? '',
-                      'hint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.time.hint') ?? '',
+                      'label': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.time.label') ?? '',
+                      'hint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.time.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
                         valueFormat: 'H:m',
                         maskFormat: 'HH:mm',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
-                      'pickerHint': DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.time.pickerHint') ?? '',
+                      'pickerHint': DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.time.pickerHint') ?? '',
                     },
                   },
                 },
               },
               'button': {
                 'add': {
-                  'label': DeepMap(response.body).getString('form.addBooking.button.add.label') ?? '',
+                  'label': DeepMap(response.body).getString('form.addParking.button.add.label') ?? '',
                   'enabled': true,
                 },
               },
@@ -418,15 +418,15 @@ class _AddBookingPageState extends State<AddBookingPage> {
           },
         };
 
-        this._ui['form']['addBooking']['field']['vehiclePlate']['controller'].text = DeepMap(response.body).getString('form.addBooking.field.vehiclePlate.value') ?? '';
-        this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.date.value') ?? '';
-        this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
-        this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleEntry.field.time.value') ?? '';
-        this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
-        this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.date.value') ?? '';
-        this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
-        this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.addBooking.fieldSet.vehicleExit.field.time.value') ?? '';
-        this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
+        this._ui['form']['addParking']['field']['vehiclePlate']['controller'].text = DeepMap(response.body).getString('form.addParking.field.vehiclePlate.value') ?? '';
+        this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.date.value') ?? '';
+        this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
+        this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.addParking.fieldSet.vehicleEntry.field.time.value') ?? '';
+        this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
+        this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.date.value') ?? '';
+        this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
+        this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.addParking.fieldSet.vehicleExit.field.time.value') ?? '';
+        this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
 
         break;
 
@@ -442,17 +442,17 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
     this._cancelableTask.cancel();
 
-    DeepMap(this._ui).getValue('form.addBooking.field.vehiclePlate.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleEntry.field.date.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleEntry.field.time.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleExit.field.date.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleExit.field.time.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.field.vehiclePlate.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleEntry.field.date.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleEntry.field.time.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleExit.field.date.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleExit.field.time.focusNode')?.dispose();
 
-    DeepMap(this._ui).getValue('form.addBooking.field.vehiclePlate.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleEntry.field.date.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleEntry.field.time.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleExit.field.date.controller')?.dispose();
-    DeepMap(this._ui).getValue('form.addBooking.fieldSet.vehicleExit.field.time.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.field.vehiclePlate.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleEntry.field.date.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleEntry.field.time.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleExit.field.date.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.fieldSet.vehicleExit.field.time.controller')?.dispose();
 
     this._ui = {};
 
@@ -472,14 +472,14 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
     final DateTime? pickedDate = await DatePicker.show(
       context: context,
-      initialDate: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime,
-      fieldHintText: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['pickerHint'],
+      initialDate: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime,
+      fieldHintText: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['pickerHint'],
     );
 
     if (pickedDate != null) {
 
-      this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime = pickedDate;
-      this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
+      this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].dateTime = pickedDate;
+      this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].mask;
 
     }
 
@@ -489,13 +489,13 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
     final DateTime? pickedTime = await TimePicker.show(
       context: context,
-      initialTime: this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime,
+      initialTime: this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime,
     );
 
     if (pickedTime != null) {
 
-      this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime = pickedTime;
-      this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
+      this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].dateTime = pickedTime;
+      this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].mask;
 
     }
 
@@ -505,14 +505,14 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
     final DateTime? pickedDate = await DatePicker.show(
       context: context,
-      initialDate: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime,
-      fieldHintText: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['pickerHint'],
+      initialDate: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime,
+      fieldHintText: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['pickerHint'],
     );
 
     if (pickedDate != null) {
 
-      this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime = pickedDate;
-      this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
+      this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].dateTime = pickedDate;
+      this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
 
       this.setState(() {});
 
@@ -524,13 +524,13 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
     final DateTime? pickedTime = await TimePicker.show(
       context: context,
-      initialTime: this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime,
+      initialTime: this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime,
     );
 
     if (pickedTime != null) {
 
-      this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime = pickedTime;
-      this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
+      this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].dateTime = pickedTime;
+      this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
 
       this.setState(() {});
 
@@ -540,8 +540,8 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
   void _clearVehicleExitDate() {
 
-    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = '';
-    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
+    this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value = '';
+    this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].mask;
 
     this.setState(() {});
 
@@ -549,32 +549,32 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
   void _clearVehicleExitTime() {
 
-    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = '';
-    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
+    this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value = '';
+    this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['controller'].text = this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].mask;
 
     this.setState(() {});
 
   }
 
-  Future<void> _addBooking(BuildContext context) async {
+  Future<void> _addParking(BuildContext context) async {
 
-    this._ui['form']['addBooking']['button']['add']['enabled'] = false;
-    this._ui['form']['addBooking']['field']['vehiclePlate']['error'] = null;
-    this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['error'] = null;
-    this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['error'] = null;
-    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['error'] = null;
-    this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['error'] = null;
+    this._ui['form']['addParking']['button']['add']['enabled'] = false;
+    this._ui['form']['addParking']['field']['vehiclePlate']['error'] = null;
+    this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['error'] = null;
+    this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['error'] = null;
+    this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['error'] = null;
+    this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['error'] = null;
 
     this.setState(() {});
 
-    final req.Request request = req.Request('post', '/garage/booking/add');
+    final req.Request request = req.Request('post', '/garage/parking/add');
 
     request.bodyFields = {
-      'vehiclePlate': this._ui['form']['addBooking']['field']['vehiclePlate']['controller'].text,
-      'vehicleEntryDate': this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value,
-      'vehicleEntryTime': this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value,
-      'vehicleExitDate': this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value,
-      'vehicleExitTime': this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value,
+      'vehiclePlate': this._ui['form']['addParking']['field']['vehiclePlate']['controller'].text,
+      'vehicleEntryDate': this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['dateTimeValue'].value,
+      'vehicleEntryTime': this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['dateTimeValue'].value,
+      'vehicleExitDate': this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['dateTimeValue'].value,
+      'vehicleExitTime': this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['dateTimeValue'].value,
     };
 
     final res.Response response = await api.send(request);
@@ -625,11 +625,11 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
           case 1: {
 
-            this._ui['form']['addBooking']['field']['vehiclePlate']['error'] = DeepMap(field).getString('vehiclePlate.message');
-            this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['date']['error'] = DeepMap(field).getString('vehicleEntryDate.message');
-            this._ui['form']['addBooking']['fieldSet']['vehicleEntry']['field']['time']['error'] = DeepMap(field).getString('vehicleEntryTime.message');
-            this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['date']['error'] = DeepMap(field).getString('vehicleExitDate.message');
-            this._ui['form']['addBooking']['fieldSet']['vehicleExit']['field']['time']['error'] = DeepMap(field).getString('vehicleExitTime.message');
+            this._ui['form']['addParking']['field']['vehiclePlate']['error'] = DeepMap(field).getString('vehiclePlate.message');
+            this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['date']['error'] = DeepMap(field).getString('vehicleEntryDate.message');
+            this._ui['form']['addParking']['fieldSet']['vehicleEntry']['field']['time']['error'] = DeepMap(field).getString('vehicleEntryTime.message');
+            this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['date']['error'] = DeepMap(field).getString('vehicleExitDate.message');
+            this._ui['form']['addParking']['fieldSet']['vehicleExit']['field']['time']['error'] = DeepMap(field).getString('vehicleExitTime.message');
 
             break;
 
@@ -663,7 +663,7 @@ class _AddBookingPageState extends State<AddBookingPage> {
 
     }
 
-    this._ui['form']['addBooking']['button']['add']['enabled'] = true;
+    this._ui['form']['addParking']['button']['add']['enabled'] = true;
 
     this.setState(() {});
 

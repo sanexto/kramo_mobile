@@ -13,18 +13,18 @@ import '../../../widgets/error_box.dart';
 
 import '../auth/login_page.dart';
 
-class ViewBookingPage extends StatefulWidget {
+class ViewParkingPage extends StatefulWidget {
 
-  final int bookingId;
+  final int parkingId;
 
-  ViewBookingPage({Key? key, required this.bookingId}) : super(key: key);
+  ViewParkingPage({Key? key, required this.parkingId}) : super(key: key);
 
   @override
-  _ViewBookingPageState createState() => _ViewBookingPageState();
+  _ViewParkingPageState createState() => _ViewParkingPageState();
 
 }
 
-class _ViewBookingPageState extends State<ViewBookingPage> {
+class _ViewParkingPageState extends State<ViewParkingPage> {
 
   final CancelableTask _cancelableTask = CancelableTask();
   Map<String, dynamic> _ui = {};
@@ -109,49 +109,49 @@ class _ViewBookingPageState extends State<ViewBookingPage> {
                                 color: Colors.transparent,
                               ),
                               Text(
-                                this._ui['bookingInfo']['bookingId']['label'],
+                                this._ui['parkingInfo']['parkingId']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.headline1!.color,
                                 ),
                               ),
                               Text(
-                                this._ui['bookingInfo']['bookingId']['value'],
+                                this._ui['parkingInfo']['parkingId']['value'],
                               ),
                               Divider(
                                 height: 32.0,
                               ),
                               Text(
-                                this._ui['bookingInfo']['vehiclePlate']['label'],
+                                this._ui['parkingInfo']['vehiclePlate']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.headline1!.color,
                                 ),
                               ),
                               Text(
-                                this._ui['bookingInfo']['vehiclePlate']['value'],
+                                this._ui['parkingInfo']['vehiclePlate']['value'],
                               ),
                               Divider(
                                 height: 32.0,
                               ),
                               Text(
-                                this._ui['bookingInfo']['vehicleEntry']['label'],
+                                this._ui['parkingInfo']['vehicleEntry']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.headline1!.color,
                                 ),
                               ),
                               Text(
-                                this._ui['bookingInfo']['vehicleEntry']['dateTimeValue'].mask,
+                                this._ui['parkingInfo']['vehicleEntry']['dateTimeValue'].mask,
                               ),
                               Divider(
                                 height: 32.0,
                               ),
                               Text(
-                                this._ui['bookingInfo']['vehicleExit']['label'],
+                                this._ui['parkingInfo']['vehicleExit']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.headline1!.color,
                                 ),
                               ),
                               Text(
-                                this._ui['bookingInfo']['vehicleExit']['dateTimeValue'].mask,
+                                this._ui['parkingInfo']['vehicleExit']['dateTimeValue'].mask,
                               ),
                               Divider(
                                 height: 16.0,
@@ -179,7 +179,7 @@ class _ViewBookingPageState extends State<ViewBookingPage> {
 
   Future<void> _initUi() async {
 
-    final req.Request request = req.Request('get', '/garage/booking/list/${this.widget.bookingId}');
+    final req.Request request = req.Request('get', '/garage/parking/list/${this.widget.parkingId}');
 
     final res.Response response = await api.send(request);
 
@@ -236,17 +236,17 @@ class _ViewBookingPageState extends State<ViewBookingPage> {
 
             this._ui = {
               'title': DeepMap(response.body).getString('title') ?? '',
-              'bookingInfo': {
-                'bookingId': {
-                  'label': DeepMap(response.body).getString('bookingInfo.bookingId.label') ?? '',
-                  'value': DeepMap(response.body).getString('bookingInfo.bookingId.value') ?? '',
+              'parkingInfo': {
+                'parkingId': {
+                  'label': DeepMap(response.body).getString('parkingInfo.parkingId.label') ?? '',
+                  'value': DeepMap(response.body).getString('parkingInfo.parkingId.value') ?? '',
                 },
                 'vehiclePlate': {
-                  'label': DeepMap(response.body).getString('bookingInfo.vehiclePlate.label') ?? '',
-                  'value': DeepMap(response.body).getString('bookingInfo.vehiclePlate.value') ?? '',
+                  'label': DeepMap(response.body).getString('parkingInfo.vehiclePlate.label') ?? '',
+                  'value': DeepMap(response.body).getString('parkingInfo.vehiclePlate.value') ?? '',
                 },
                 'vehicleEntry': {
-                  'label': DeepMap(response.body).getString('bookingInfo.vehicleEntry.label') ?? '',
+                  'label': DeepMap(response.body).getString('parkingInfo.vehicleEntry.label') ?? '',
                   'dateTimeValue': DateTimeValue(
                     valueFormat: 'yyyy/M/d H:m',
                     maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
@@ -254,7 +254,7 @@ class _ViewBookingPageState extends State<ViewBookingPage> {
                   ),
                 },
                 'vehicleExit': {
-                  'label': DeepMap(response.body).getString('bookingInfo.vehicleExit.label') ?? '',
+                  'label': DeepMap(response.body).getString('parkingInfo.vehicleExit.label') ?? '',
                   'dateTimeValue': DateTimeValue(
                     valueFormat: 'yyyy/M/d H:m',
                     maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
@@ -264,8 +264,8 @@ class _ViewBookingPageState extends State<ViewBookingPage> {
               },
             };
 
-            this._ui['bookingInfo']['vehicleEntry']['dateTimeValue'].value = DeepMap(response.body).getString('bookingInfo.vehicleEntry.value') ?? '';
-            this._ui['bookingInfo']['vehicleExit']['dateTimeValue'].value = DeepMap(response.body).getString('bookingInfo.vehicleExit.value') ?? '';
+            this._ui['parkingInfo']['vehicleEntry']['dateTimeValue'].value = DeepMap(response.body).getString('parkingInfo.vehicleEntry.value') ?? '';
+            this._ui['parkingInfo']['vehicleExit']['dateTimeValue'].value = DeepMap(response.body).getString('parkingInfo.vehicleExit.value') ?? '';
 
             break;
 

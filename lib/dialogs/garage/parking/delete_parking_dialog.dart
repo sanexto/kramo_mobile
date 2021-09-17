@@ -11,18 +11,18 @@ import '../../../widgets/error_box.dart';
 
 import '../../../pages/garage/auth/login_page.dart';
 
-class DeleteBookingDialog extends StatefulWidget {
+class DeleteParkingDialog extends StatefulWidget {
 
-  final int bookingId;
+  final int parkingId;
 
-  DeleteBookingDialog({Key? key, required this.bookingId}) : super(key: key);
+  DeleteParkingDialog({Key? key, required this.parkingId}) : super(key: key);
 
   @override
-  _DeleteBookingDialogState createState() => _DeleteBookingDialogState();
+  _DeleteParkingDialogState createState() => _DeleteParkingDialogState();
 
 }
 
-class _DeleteBookingDialogState extends State<DeleteBookingDialog> {
+class _DeleteParkingDialogState extends State<DeleteParkingDialog> {
 
   final CancelableTask _cancelableTask = CancelableTask();
   Map<String, dynamic> _ui = {};
@@ -111,17 +111,17 @@ class _DeleteBookingDialogState extends State<DeleteBookingDialog> {
                 actions: [
                   TextButton(
                     child: Text(
-                      this._ui['form']['deleteBooking']['button']['cancel']['label'],
+                      this._ui['form']['deleteParking']['button']['cancel']['label'],
                       overflow: TextOverflow.ellipsis,
                     ),
                     onPressed: () => Navigator.pop(context),
                   ),
                   TextButton(
                     child: Text(
-                      this._ui['form']['deleteBooking']['button']['delete']['label'],
+                      this._ui['form']['deleteParking']['button']['delete']['label'],
                       overflow: TextOverflow.ellipsis,
                     ),
-                    onPressed: !this._ui['form']['deleteBooking']['button']['delete']['enabled'] ? null : () => this._cancelableTask.run('_deleteBooking', this._deleteBooking(context)),
+                    onPressed: !this._ui['form']['deleteParking']['button']['delete']['enabled'] ? null : () => this._cancelableTask.run('_deleteParking', this._deleteParking(context)),
                   ),
                 ],
               ),
@@ -141,7 +141,7 @@ class _DeleteBookingDialogState extends State<DeleteBookingDialog> {
 
   Future<void> _initUi() async {
 
-    final req.Request request = req.Request('get', '/garage/booking/delete/${this.widget.bookingId}');
+    final req.Request request = req.Request('get', '/garage/parking/delete/${this.widget.parkingId}');
 
     final res.Response response = await api.send(request);
 
@@ -200,13 +200,13 @@ class _DeleteBookingDialogState extends State<DeleteBookingDialog> {
               'title': DeepMap(response.body).getString('title') ?? '',
               'content': DeepMap(response.body).getString('content') ?? '',
               'form': {
-                'deleteBooking': {
+                'deleteParking': {
                   'button': {
                     'cancel': {
-                      'label': DeepMap(response.body).getString('form.deleteBooking.button.cancel.label') ?? '',
+                      'label': DeepMap(response.body).getString('form.deleteParking.button.cancel.label') ?? '',
                     },
                     'delete': {
-                      'label': DeepMap(response.body).getString('form.deleteBooking.button.delete.label') ?? '',
+                      'label': DeepMap(response.body).getString('form.deleteParking.button.delete.label') ?? '',
                       'enabled': true,
                     },
                   },
@@ -248,13 +248,13 @@ class _DeleteBookingDialogState extends State<DeleteBookingDialog> {
 
   }
 
-  Future<void> _deleteBooking(BuildContext context) async {
+  Future<void> _deleteParking(BuildContext context) async {
 
-    this._ui['form']['deleteBooking']['button']['delete']['enabled'] = false;
+    this._ui['form']['deleteParking']['button']['delete']['enabled'] = false;
 
     this.setState(() {});
 
-    final req.Request request = req.Request('delete', '/garage/booking/delete/${this.widget.bookingId}');
+    final req.Request request = req.Request('delete', '/garage/parking/delete/${this.widget.parkingId}');
 
     final res.Response response = await api.send(request);
 
@@ -330,7 +330,7 @@ class _DeleteBookingDialogState extends State<DeleteBookingDialog> {
 
     }
 
-    this._ui['form']['deleteBooking']['button']['delete']['enabled'] = true;
+    this._ui['form']['deleteParking']['button']['delete']['enabled'] = true;
 
     this.setState(() {});
 
