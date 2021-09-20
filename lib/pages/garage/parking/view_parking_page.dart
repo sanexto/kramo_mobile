@@ -121,37 +121,37 @@ class _ViewParkingPageState extends State<ViewParkingPage> {
                                 height: 32.0,
                               ),
                               Text(
-                                this._ui['parkingInfo']['vehiclePlate']['label'],
+                                this._ui['parkingInfo']['plate']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.headline1!.color,
                                 ),
                               ),
                               Text(
-                                this._ui['parkingInfo']['vehiclePlate']['value'],
+                                this._ui['parkingInfo']['plate']['value'],
                               ),
                               Divider(
                                 height: 32.0,
                               ),
                               Text(
-                                this._ui['parkingInfo']['vehicleEntry']['label'],
+                                this._ui['parkingInfo']['entry']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.headline1!.color,
                                 ),
                               ),
                               Text(
-                                this._ui['parkingInfo']['vehicleEntry']['dateTimeValue'].mask,
+                                this._ui['parkingInfo']['entry']['dateTimeValue'].mask,
                               ),
                               Divider(
                                 height: 32.0,
                               ),
                               Text(
-                                this._ui['parkingInfo']['vehicleExit']['label'],
+                                this._ui['parkingInfo']['exit']['label'],
                                 style: TextStyle(
                                   color: Theme.of(context).textTheme.headline1!.color,
                                 ),
                               ),
                               Text(
-                                this._ui['parkingInfo']['vehicleExit']['dateTimeValue'].mask,
+                                this._ui['parkingInfo']['exit']['dateTimeValue'].mask,
                               ),
                               Divider(
                                 height: 16.0,
@@ -241,20 +241,20 @@ class _ViewParkingPageState extends State<ViewParkingPage> {
                   'label': DeepMap(response.body).getString('parkingInfo.parkingId.label') ?? '',
                   'value': DeepMap(response.body).getString('parkingInfo.parkingId.value') ?? '',
                 },
-                'vehiclePlate': {
-                  'label': DeepMap(response.body).getString('parkingInfo.vehiclePlate.label') ?? '',
-                  'value': DeepMap(response.body).getString('parkingInfo.vehiclePlate.value') ?? '',
+                'plate': {
+                  'label': DeepMap(response.body).getString('parkingInfo.plate.label') ?? '',
+                  'value': DeepMap(response.body).getString('parkingInfo.plate.value') ?? '',
                 },
-                'vehicleEntry': {
-                  'label': DeepMap(response.body).getString('parkingInfo.vehicleEntry.label') ?? '',
+                'entry': {
+                  'label': DeepMap(response.body).getString('parkingInfo.entry.label') ?? '',
                   'dateTimeValue': DateTimeValue(
                     valueFormat: 'yyyy/M/d H:m',
                     maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                     maskLocale: Localizations.localeOf(this.context).languageCode,
                   ),
                 },
-                'vehicleExit': {
-                  'label': DeepMap(response.body).getString('parkingInfo.vehicleExit.label') ?? '',
+                'exit': {
+                  'label': DeepMap(response.body).getString('parkingInfo.exit.label') ?? '',
                   'dateTimeValue': DateTimeValue(
                     valueFormat: 'yyyy/M/d H:m',
                     maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
@@ -264,8 +264,8 @@ class _ViewParkingPageState extends State<ViewParkingPage> {
               },
             };
 
-            this._ui['parkingInfo']['vehicleEntry']['dateTimeValue'].value = DeepMap(response.body).getString('parkingInfo.vehicleEntry.value') ?? '';
-            this._ui['parkingInfo']['vehicleExit']['dateTimeValue'].value = DeepMap(response.body).getString('parkingInfo.vehicleExit.value') ?? '';
+            this._ui['parkingInfo']['entry']['dateTimeValue'].value = DeepMap(response.body).getString('parkingInfo.entry.value') ?? '';
+            this._ui['parkingInfo']['exit']['dateTimeValue'].value = DeepMap(response.body).getString('parkingInfo.exit.value') ?? '';
 
             break;
 

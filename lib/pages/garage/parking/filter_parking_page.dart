@@ -92,8 +92,8 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
                             alignment: Alignment.topRight,
                             children: [
                               TextField(
-                                focusNode: this._ui['form']['filterParking']['field']['vehicleEntry']['focusNode'],
-                                controller: this._ui['form']['filterParking']['field']['vehicleEntry']['controller'],
+                                focusNode: this._ui['form']['filterParking']['field']['entry']['focusNode'],
+                                controller: this._ui['form']['filterParking']['field']['entry']['controller'],
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.only(
                                     left: 12.0,
@@ -101,16 +101,16 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
                                     right: 48.0,
                                     bottom: 12.0,
                                   ),
-                                  labelText: this._ui['form']['filterParking']['field']['vehicleEntry']['label'],
-                                  hintText: this._ui['form']['filterParking']['field']['vehicleEntry']['hint'],
+                                  labelText: this._ui['form']['filterParking']['field']['entry']['label'],
+                                  hintText: this._ui['form']['filterParking']['field']['entry']['hint'],
                                   filled: true,
                                 ),
                                 readOnly: true,
                                 textInputAction: TextInputAction.next,
-                                onTap: () => this._cancelableTask.run('_openVehicleEntryDateRangePickerDialog', this._openVehicleEntryDateRangePickerDialog(context)),
-                                onEditingComplete: () => this._ui['form']['filterParking']['field']['vehicleExit']['focusNode'].requestFocus(),
+                                onTap: () => this._cancelableTask.run('_openEntryDateRangePickerDialog', this._openEntryDateRangePickerDialog(context)),
+                                onEditingComplete: () => this._ui['form']['filterParking']['field']['exit']['focusNode'].requestFocus(),
                               ),
-                              this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].value == this._ui['form']['filterParking']['field']['vehicleEntry']['default'] ? SizedBox.shrink() : Padding(
+                              this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].value == this._ui['form']['filterParking']['field']['entry']['default'] ? SizedBox.shrink() : Padding(
                                 padding: EdgeInsets.only(
                                   top: 6.0,
                                 ),
@@ -119,7 +119,7 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
                                     pickIcon('times'),
                                   ),
                                   color: Colors.black45,
-                                  onPressed: () => this._clearVehicleEntryFilter(),
+                                  onPressed: () => this._clearEntryFilter(),
                                 ),
                               ),
                             ],
@@ -131,8 +131,8 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
                             alignment: Alignment.topRight,
                             children: [
                               TextField(
-                                focusNode: this._ui['form']['filterParking']['field']['vehicleExit']['focusNode'],
-                                controller: this._ui['form']['filterParking']['field']['vehicleExit']['controller'],
+                                focusNode: this._ui['form']['filterParking']['field']['exit']['focusNode'],
+                                controller: this._ui['form']['filterParking']['field']['exit']['controller'],
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.only(
                                     left: 12.0,
@@ -140,16 +140,16 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
                                     right: 48.0,
                                     bottom: 12.0,
                                   ),
-                                  labelText: this._ui['form']['filterParking']['field']['vehicleExit']['label'],
-                                  hintText: this._ui['form']['filterParking']['field']['vehicleExit']['hint'],
+                                  labelText: this._ui['form']['filterParking']['field']['exit']['label'],
+                                  hintText: this._ui['form']['filterParking']['field']['exit']['hint'],
                                   filled: true,
                                 ),
                                 readOnly: true,
                                 textInputAction: TextInputAction.next,
-                                onTap: () => this._cancelableTask.run('_openVehicleExitDateRangePickerDialog', this._openVehicleExitDateRangePickerDialog(context)),
+                                onTap: () => this._cancelableTask.run('_openExitDateRangePickerDialog', this._openExitDateRangePickerDialog(context)),
                                 onEditingComplete: () => this._ui['form']['filterParking']['field']['orderBy']['focusNode'].requestFocus(),
                               ),
-                              this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].value == this._ui['form']['filterParking']['field']['vehicleExit']['default'] ? SizedBox.shrink() : Padding(
+                              this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].value == this._ui['form']['filterParking']['field']['exit']['default'] ? SizedBox.shrink() : Padding(
                                 padding: EdgeInsets.only(
                                   top: 6.0,
                                 ),
@@ -158,7 +158,7 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
                                     pickIcon('times'),
                                   ),
                                   color: Colors.black45,
-                                  onPressed: () => this._clearVehicleExitFilter(),
+                                  onPressed: () => this._clearExitFilter(),
                                 ),
                               ),
                             ],
@@ -290,18 +290,18 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
 
   }
 
-  Future<void> _openVehicleEntryDateRangePickerDialog(BuildContext context) async {
+  Future<void> _openEntryDateRangePickerDialog(BuildContext context) async {
 
     final DateTimeRange? pickedDateRange = await DateRangePicker.show(
       context: context,
-      initialDateRange: this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].dateTimeRange,
-      fieldHintText: this._ui['form']['filterParking']['field']['vehicleEntry']['pickerHint'],
+      initialDateRange: this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].dateTimeRange,
+      fieldHintText: this._ui['form']['filterParking']['field']['entry']['pickerHint'],
     );
 
     if (pickedDateRange != null) {
 
-      this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].dateTimeRange = pickedDateRange;
-      this._ui['form']['filterParking']['field']['vehicleEntry']['controller'].text = this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].mask;
+      this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].dateTimeRange = pickedDateRange;
+      this._ui['form']['filterParking']['field']['entry']['controller'].text = this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].mask;
 
       this.setState(() {});
 
@@ -309,18 +309,18 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
 
   }
 
-  Future<void> _openVehicleExitDateRangePickerDialog(BuildContext context) async {
+  Future<void> _openExitDateRangePickerDialog(BuildContext context) async {
 
     final DateTimeRange? pickedDateRange = await DateRangePicker.show(
       context: context,
-      initialDateRange: this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].dateTimeRange,
-      fieldHintText: this._ui['form']['filterParking']['field']['vehicleExit']['pickerHint'],
+      initialDateRange: this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].dateTimeRange,
+      fieldHintText: this._ui['form']['filterParking']['field']['exit']['pickerHint'],
     );
 
     if (pickedDateRange != null) {
 
-      this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].dateTimeRange = pickedDateRange;
-      this._ui['form']['filterParking']['field']['vehicleExit']['controller'].text = this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].mask;
+      this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].dateTimeRange = pickedDateRange;
+      this._ui['form']['filterParking']['field']['exit']['controller'].text = this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].mask;
 
       this.setState(() {});
 
@@ -330,10 +330,10 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
 
   void _clearFilter() {
 
-    this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['vehicleEntry']['default'];
-    this._ui['form']['filterParking']['field']['vehicleEntry']['controller'].text = this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].mask;
-    this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['vehicleExit']['default'];
-    this._ui['form']['filterParking']['field']['vehicleExit']['controller'].text = this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].mask;
+    this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['entry']['default'];
+    this._ui['form']['filterParking']['field']['entry']['controller'].text = this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].mask;
+    this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['exit']['default'];
+    this._ui['form']['filterParking']['field']['exit']['controller'].text = this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].mask;
     this._ui['form']['filterParking']['field']['orderBy']['controller'].text = this._ui['form']['filterParking']['field']['orderBy']['default'];
     this._ui['form']['filterParking']['field']['order']['controller'].text = this._ui['form']['filterParking']['field']['order']['default'];
 
@@ -341,19 +341,19 @@ class _FilterParkingPageState extends State<FilterParkingPage> {
 
   }
 
-  void _clearVehicleEntryFilter() {
+  void _clearEntryFilter() {
 
-    this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['vehicleEntry']['default'];
-    this._ui['form']['filterParking']['field']['vehicleEntry']['controller'].text = this._ui['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].mask;
+    this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['entry']['default'];
+    this._ui['form']['filterParking']['field']['entry']['controller'].text = this._ui['form']['filterParking']['field']['entry']['dateTimeRangeValue'].mask;
 
     this.setState(() {});
 
   }
 
-  void _clearVehicleExitFilter() {
+  void _clearExitFilter() {
 
-    this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['vehicleExit']['default'];
-    this._ui['form']['filterParking']['field']['vehicleExit']['controller'].text = this._ui['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].mask;
+    this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].value = this._ui['form']['filterParking']['field']['exit']['default'];
+    this._ui['form']['filterParking']['field']['exit']['controller'].text = this._ui['form']['filterParking']['field']['exit']['dateTimeRangeValue'].mask;
 
     this.setState(() {});
 

@@ -315,39 +315,39 @@ class _HomePageState extends State<HomePage> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  item['info']['vehiclePlate']['label'],
+                                                  item['info']['plate']['label'],
                                                   style: TextStyle(
                                                     color: Theme.of(context).textTheme.headline1!.color,
                                                   ),
                                                 ),
                                                 Text(
-                                                  item['info']['vehiclePlate']['value'],
+                                                  item['info']['plate']['value'],
                                                 ),
                                                 Divider(
                                                   height: 16.0,
                                                   color: Colors.transparent,
                                                 ),
                                                 Text(
-                                                  item['info']['vehicleEntry']['label'],
+                                                  item['info']['entry']['label'],
                                                   style: TextStyle(
                                                     color: Theme.of(context).textTheme.headline1!.color,
                                                   ),
                                                 ),
                                                 Text(
-                                                  item['info']['vehicleEntry']['dateTimeValue'].mask,
+                                                  item['info']['entry']['dateTimeValue'].mask,
                                                 ),
                                                 Divider(
                                                   height: 16.0,
                                                   color: Colors.transparent,
                                                 ),
                                                 Text(
-                                                  item['info']['vehicleExit']['label'],
+                                                  item['info']['exit']['label'],
                                                   style: TextStyle(
                                                     color: Theme.of(context).textTheme.headline1!.color,
                                                   ),
                                                 ),
                                                 Text(
-                                                  item['info']['vehicleExit']['dateTimeValue'].mask,
+                                                  item['info']['exit']['dateTimeValue'].mask,
                                                 ),
                                               ],
                                             ),
@@ -520,11 +520,11 @@ class _HomePageState extends State<HomePage> {
                   'form': {
                     'filterParking': {
                       'field': {
-                        'vehicleEntry': {
+                        'entry': {
                           'focusNode': FocusNode(),
                           'controller': TextEditingController(),
-                          'label': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleEntry.label') ?? '',
-                          'hint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleEntry.hint') ?? '',
+                          'label': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.entry.label') ?? '',
+                          'hint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.entry.hint') ?? '',
                           'dateTimeRangeValue': DateTimeRangeValue(
                             valueSeparator: ' - ',
                             valueFormat: 'yyyy/M/d',
@@ -532,14 +532,14 @@ class _HomePageState extends State<HomePage> {
                             maskFormat: 'd MMM yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
-                          'default': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleEntry.default') ?? '',
-                          'pickerHint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleEntry.pickerHint') ?? '',
+                          'default': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.entry.default') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.entry.pickerHint') ?? '',
                         },
-                        'vehicleExit': {
+                        'exit': {
                           'focusNode': FocusNode(),
                           'controller': TextEditingController(),
-                          'label': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleExit.label') ?? '',
-                          'hint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleExit.hint') ?? '',
+                          'label': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.exit.label') ?? '',
+                          'hint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.exit.hint') ?? '',
                           'dateTimeRangeValue': DateTimeRangeValue(
                             valueSeparator: ' - ',
                             valueFormat: 'yyyy/M/d',
@@ -547,8 +547,8 @@ class _HomePageState extends State<HomePage> {
                             maskFormat: 'd MMM yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
-                          'default': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleExit.default') ?? '',
-                          'pickerHint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleExit.pickerHint') ?? '',
+                          'default': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.exit.default') ?? '',
+                          'pickerHint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.exit.pickerHint') ?? '',
                         },
                         'orderBy': {
                           'focusNode': FocusNode(),
@@ -593,10 +593,10 @@ class _HomePageState extends State<HomePage> {
             };
 
             this._ui['form']['searchParking']['field']['term']['controller'].text = DeepMap(response.body).getString('form.searchParking.field.term.value') ?? '';
-            this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].value = DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleEntry.value') ?? '';
-            this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleEntry']['controller'].text = this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].mask;
-            this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].value = DeepMap(response.body).getString('page.filterParking.form.filterParking.field.vehicleExit.value') ?? '';
-            this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleExit']['controller'].text = this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].mask;
+            this._ui['page']['filterParking']['form']['filterParking']['field']['entry']['dateTimeRangeValue'].value = DeepMap(response.body).getString('page.filterParking.form.filterParking.field.entry.value') ?? '';
+            this._ui['page']['filterParking']['form']['filterParking']['field']['entry']['controller'].text = this._ui['page']['filterParking']['form']['filterParking']['field']['entry']['dateTimeRangeValue'].mask;
+            this._ui['page']['filterParking']['form']['filterParking']['field']['exit']['dateTimeRangeValue'].value = DeepMap(response.body).getString('page.filterParking.form.filterParking.field.exit.value') ?? '';
+            this._ui['page']['filterParking']['form']['filterParking']['field']['exit']['controller'].text = this._ui['page']['filterParking']['form']['filterParking']['field']['exit']['dateTimeRangeValue'].mask;
             this._ui['page']['filterParking']['form']['filterParking']['field']['orderBy']['controller'].text = DeepMap(response.body).getString('page.filterParking.form.filterParking.field.orderBy.value') ?? '';
             this._ui['page']['filterParking']['form']['filterParking']['field']['order']['controller'].text = DeepMap(response.body).getString('page.filterParking.form.filterParking.field.order.value') ?? '';
 
@@ -625,14 +625,14 @@ class _HomePageState extends State<HomePage> {
     this._cancelableTask.cancel();
 
     DeepMap(this._ui).getValue('form.searchParking.field.term.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.vehicleEntry.focusNode')?.dispose();
-    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.vehicleExit.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.entry.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.exit.focusNode')?.dispose();
     DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.orderBy.focusNode')?.dispose();
     DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.order.focusNode')?.dispose();
 
     DeepMap(this._ui).getValue('form.searchParking.field.term.controller')?.dispose();
-    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.vehicleEntry.controller')?.dispose();
-    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.vehicleExit.controller')?.dispose();
+    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.entry.controller')?.dispose();
+    DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.exit.controller')?.dispose();
     DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.orderBy.controller')?.dispose();
     DeepMap(this._ui).getValue('page.filterParking.form.filterParking.field.order.controller')?.dispose();
 
@@ -811,8 +811,8 @@ class _HomePageState extends State<HomePage> {
 
     final req.Request request = req.Request('get', '/garage/parking/list', {
       'term': this._ui['form']['searchParking']['field']['term']['controller'].text,
-      'vehicleEntry': this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleEntry']['dateTimeRangeValue'].value,
-      'vehicleExit': this._ui['page']['filterParking']['form']['filterParking']['field']['vehicleExit']['dateTimeRangeValue'].value,
+      'entry': this._ui['page']['filterParking']['form']['filterParking']['field']['entry']['dateTimeRangeValue'].value,
+      'exit': this._ui['page']['filterParking']['form']['filterParking']['field']['exit']['dateTimeRangeValue'].value,
       'orderBy': this._ui['page']['filterParking']['form']['filterParking']['field']['orderBy']['controller'].text,
       'order': this._ui['page']['filterParking']['form']['filterParking']['field']['order']['controller'].text,
       'page': pageKey.toString(),
@@ -872,20 +872,20 @@ class _HomePageState extends State<HomePage> {
               final Map<String, dynamic> _item = {
                 'info': {
                   'parkingId': DeepMap(item).getInt('info.parkingId') ?? 0,
-                  'vehiclePlate': {
-                    'label': DeepMap(item).getString('info.vehiclePlate.label') ?? '',
-                    'value': DeepMap(item).getString('info.vehiclePlate.value') ?? '',
+                  'plate': {
+                    'label': DeepMap(item).getString('info.plate.label') ?? '',
+                    'value': DeepMap(item).getString('info.plate.value') ?? '',
                   },
-                  'vehicleEntry': {
-                    'label': DeepMap(item).getString('info.vehicleEntry.label') ?? '',
+                  'entry': {
+                    'label': DeepMap(item).getString('info.entry.label') ?? '',
                     'dateTimeValue': DateTimeValue(
                       valueFormat: 'yyyy/M/d H:m',
                       maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                       maskLocale: Localizations.localeOf(this.context).languageCode,
                     ),
                   },
-                  'vehicleExit': {
-                    'label': DeepMap(item).getString('info.vehicleExit.label') ?? '',
+                  'exit': {
+                    'label': DeepMap(item).getString('info.exit.label') ?? '',
                     'dateTimeValue': DateTimeValue(
                       valueFormat: 'yyyy/M/d H:m',
                       maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
@@ -905,8 +905,8 @@ class _HomePageState extends State<HomePage> {
                 },
               };
 
-              _item['info']['vehicleEntry']['dateTimeValue'].value = DeepMap(item).getString('info.vehicleEntry.value') ?? '';
-              _item['info']['vehicleExit']['dateTimeValue'].value = DeepMap(item).getString('info.vehicleExit.value') ?? '';
+              _item['info']['entry']['dateTimeValue'].value = DeepMap(item).getString('info.entry.value') ?? '';
+              _item['info']['exit']['dateTimeValue'].value = DeepMap(item).getString('info.exit.value') ?? '';
 
               return _item;
 
