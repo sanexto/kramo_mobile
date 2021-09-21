@@ -349,6 +349,19 @@ class _HomePageState extends State<HomePage> {
                                                 Text(
                                                   item['info']['exit']['dateTimeValue'].mask,
                                                 ),
+                                                Divider(
+                                                  height: 16.0,
+                                                  color: Colors.transparent,
+                                                ),
+                                                Text(
+                                                  item['info']['price']['label'],
+                                                  style: TextStyle(
+                                                    color: Theme.of(context).textTheme.headline1!.color,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  item['info']['price']['value'],
+                                                ),
                                               ],
                                             ),
                                           ),
@@ -891,6 +904,10 @@ class _HomePageState extends State<HomePage> {
                       maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                       maskLocale: Localizations.localeOf(this.context).languageCode,
                     ),
+                  },
+                  'price': {
+                    'label': DeepMap(item).getString('info.price.label') ?? '',
+                    'value': DeepMap(item).getString('info.price.value') ?? '',
                   },
                 },
                 'menu': {

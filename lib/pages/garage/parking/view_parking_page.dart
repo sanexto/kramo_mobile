@@ -154,6 +154,18 @@ class _ViewParkingPageState extends State<ViewParkingPage> {
                                 this._ui['parkingInfo']['exit']['dateTimeValue'].mask,
                               ),
                               Divider(
+                                height: 32.0,
+                              ),
+                              Text(
+                                this._ui['parkingInfo']['price']['label'],
+                                style: TextStyle(
+                                  color: Theme.of(context).textTheme.headline1!.color,
+                                ),
+                              ),
+                              Text(
+                                this._ui['parkingInfo']['price']['value'],
+                              ),
+                              Divider(
                                 height: 16.0,
                                 color: Colors.transparent,
                               ),
@@ -260,6 +272,10 @@ class _ViewParkingPageState extends State<ViewParkingPage> {
                     maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                     maskLocale: Localizations.localeOf(this.context).languageCode,
                   ),
+                },
+                'price': {
+                  'label': DeepMap(response.body).getString('parkingInfo.price.label') ?? '',
+                  'value': DeepMap(response.body).getString('parkingInfo.price.value') ?? '',
                 },
               },
             };
