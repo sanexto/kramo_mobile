@@ -240,8 +240,9 @@ class _AddParkingPageState extends State<AddParkingPage> {
                                       filled: true,
                                     ),
                                     readOnly: true,
-                                    textInputAction: TextInputAction.done,
+                                    textInputAction: TextInputAction.next,
                                     onTap: () => this._cancelableTask.run('_openExitTimePickerDialog', this._openExitTimePickerDialog(context)),
+                                    onEditingComplete: () => this._ui['form']['addParking']['field']['price']['focusNode'].requestFocus(),
                                   ),
                                   this._ui['form']['addParking']['fieldSet']['exit']['field']['time']['dateTimeValue'].value.isEmpty ? SizedBox.shrink() : Padding(
                                     padding: EdgeInsets.only(
@@ -256,6 +257,23 @@ class _AddParkingPageState extends State<AddParkingPage> {
                                     ),
                                   ),
                                 ],
+                              ),
+                              Divider(
+                                height: 32.0,
+                                color: Theme.of(context).textTheme.caption!.color,
+                              ),
+                              TextField(
+                                focusNode: this._ui['form']['addParking']['field']['price']['focusNode'],
+                                controller: this._ui['form']['addParking']['field']['price']['controller'],
+                                decoration: InputDecoration(
+                                  labelText: this._ui['form']['addParking']['field']['price']['label'],
+                                  hintText: this._ui['form']['addParking']['field']['price']['hint'],
+                                  errorText: this._ui['form']['addParking']['field']['price']['error'],
+                                  errorMaxLines: 100,
+                                  filled: true,
+                                ),
+                                keyboardType: TextInputType.number,
+                                textInputAction: TextInputAction.done,
                               ),
                             ],
                           ),
@@ -343,6 +361,13 @@ class _AddParkingPageState extends State<AddParkingPage> {
                   'hint': DeepMap(response.body).getString('form.addParking.field.plate.hint') ?? '',
                   'error': null,
                 },
+                'price': {
+                  'focusNode': FocusNode(),
+                  'controller': TextEditingController(),
+                  'label': DeepMap(response.body).getString('form.addParking.field.price.label') ?? '',
+                  'hint': DeepMap(response.body).getString('form.addParking.field.price.hint') ?? '',
+                  'error': null,
+                },
               },
               'fieldSet': {
                 'entry': {
@@ -427,6 +452,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
         this._ui['form']['addParking']['fieldSet']['exit']['field']['date']['controller'].text = this._ui['form']['addParking']['fieldSet']['exit']['field']['date']['dateTimeValue'].mask;
         this._ui['form']['addParking']['fieldSet']['exit']['field']['time']['dateTimeValue'].value = DeepMap(response.body).getString('form.addParking.fieldSet.exit.field.time.value') ?? '';
         this._ui['form']['addParking']['fieldSet']['exit']['field']['time']['controller'].text = this._ui['form']['addParking']['fieldSet']['exit']['field']['time']['dateTimeValue'].mask;
+        this._ui['form']['addParking']['field']['price']['controller'].text = DeepMap(response.body).getString('form.addParking.field.price.value') ?? '';
 
         break;
 
@@ -447,12 +473,14 @@ class _AddParkingPageState extends State<AddParkingPage> {
     DeepMap(this._ui).getValue('form.addParking.fieldSet.entry.field.time.focusNode')?.dispose();
     DeepMap(this._ui).getValue('form.addParking.fieldSet.exit.field.date.focusNode')?.dispose();
     DeepMap(this._ui).getValue('form.addParking.fieldSet.exit.field.time.focusNode')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.field.price.focusNode')?.dispose();
 
     DeepMap(this._ui).getValue('form.addParking.field.plate.controller')?.dispose();
     DeepMap(this._ui).getValue('form.addParking.fieldSet.entry.field.date.controller')?.dispose();
     DeepMap(this._ui).getValue('form.addParking.fieldSet.entry.field.time.controller')?.dispose();
     DeepMap(this._ui).getValue('form.addParking.fieldSet.exit.field.date.controller')?.dispose();
     DeepMap(this._ui).getValue('form.addParking.fieldSet.exit.field.time.controller')?.dispose();
+    DeepMap(this._ui).getValue('form.addParking.field.price.controller')?.dispose();
 
     this._ui = {};
 
@@ -564,6 +592,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
     this._ui['form']['addParking']['fieldSet']['entry']['field']['time']['error'] = null;
     this._ui['form']['addParking']['fieldSet']['exit']['field']['date']['error'] = null;
     this._ui['form']['addParking']['fieldSet']['exit']['field']['time']['error'] = null;
+    this._ui['form']['addParking']['field']['price']['error'] = null;
 
     this.setState(() {});
 
@@ -575,6 +604,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
       'entryTime': this._ui['form']['addParking']['fieldSet']['entry']['field']['time']['dateTimeValue'].value,
       'exitDate': this._ui['form']['addParking']['fieldSet']['exit']['field']['date']['dateTimeValue'].value,
       'exitTime': this._ui['form']['addParking']['fieldSet']['exit']['field']['time']['dateTimeValue'].value,
+      'price': this._ui['form']['addParking']['field']['price']['controller'].text,
     };
 
     final res.Response response = await api.send(request);
@@ -630,6 +660,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
             this._ui['form']['addParking']['fieldSet']['entry']['field']['time']['error'] = DeepMap(field).getString('entryTime.message');
             this._ui['form']['addParking']['fieldSet']['exit']['field']['date']['error'] = DeepMap(field).getString('exitDate.message');
             this._ui['form']['addParking']['fieldSet']['exit']['field']['time']['error'] = DeepMap(field).getString('exitTime.message');
+            this._ui['form']['addParking']['field']['price']['error'] = DeepMap(field).getString('price.message');
 
             break;
 
