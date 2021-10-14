@@ -398,7 +398,7 @@ class _UpdateParkingPageState extends State<UpdateParkingPage> {
                           'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.entry.field.date.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
-                            valueFormat: 'yyyy/M/d',
+                            valueFormat: 'yyyy/MM/dd',
                             maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
@@ -411,7 +411,7 @@ class _UpdateParkingPageState extends State<UpdateParkingPage> {
                           'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.entry.field.time.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
-                            valueFormat: 'H:m',
+                            valueFormat: 'HH:mm',
                             maskFormat: 'HH:mm',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
@@ -429,7 +429,7 @@ class _UpdateParkingPageState extends State<UpdateParkingPage> {
                           'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.exit.field.date.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
-                            valueFormat: 'yyyy/M/d',
+                            valueFormat: 'yyyy/MM/dd',
                             maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),
@@ -442,7 +442,7 @@ class _UpdateParkingPageState extends State<UpdateParkingPage> {
                           'hint': DeepMap(response.body).getString('form.updateParking.fieldSet.exit.field.time.hint') ?? '',
                           'error': null,
                           'dateTimeValue': DateTimeValue(
-                            valueFormat: 'H:m',
+                            valueFormat: 'HH:mm',
                             maskFormat: 'HH:mm',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
                           ),

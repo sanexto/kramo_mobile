@@ -380,7 +380,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
                       'hint': DeepMap(response.body).getString('form.addParking.fieldSet.entry.field.date.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
-                        valueFormat: 'yyyy/M/d',
+                        valueFormat: 'yyyy/MM/dd',
                         maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
@@ -393,7 +393,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
                       'hint': DeepMap(response.body).getString('form.addParking.fieldSet.entry.field.time.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
-                        valueFormat: 'H:m',
+                        valueFormat: 'HH:mm',
                         maskFormat: 'HH:mm',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
@@ -411,7 +411,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
                       'hint': DeepMap(response.body).getString('form.addParking.fieldSet.exit.field.date.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
-                        valueFormat: 'yyyy/M/d',
+                        valueFormat: 'yyyy/MM/dd',
                         maskFormat: 'E d \'de\' MMM \'del\' yyyy',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),
@@ -424,7 +424,7 @@ class _AddParkingPageState extends State<AddParkingPage> {
                       'hint': DeepMap(response.body).getString('form.addParking.fieldSet.exit.field.time.hint') ?? '',
                       'error': null,
                       'dateTimeValue': DateTimeValue(
-                        valueFormat: 'H:m',
+                        valueFormat: 'HH:mm',
                         maskFormat: 'HH:mm',
                         maskLocale: Localizations.localeOf(this.context).languageCode,
                       ),

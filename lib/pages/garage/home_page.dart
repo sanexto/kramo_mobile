@@ -540,7 +540,7 @@ class _HomePageState extends State<HomePage> {
                           'hint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.entry.hint') ?? '',
                           'dateTimeRangeValue': DateTimeRangeValue(
                             valueSeparator: ' - ',
-                            valueFormat: 'yyyy/M/d',
+                            valueFormat: 'yyyy/MM/dd',
                             maskSeparator: ' - ',
                             maskFormat: 'd MMM yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
@@ -555,7 +555,7 @@ class _HomePageState extends State<HomePage> {
                           'hint': DeepMap(response.body).getString('page.filterParking.form.filterParking.field.exit.hint') ?? '',
                           'dateTimeRangeValue': DateTimeRangeValue(
                             valueSeparator: ' - ',
-                            valueFormat: 'yyyy/M/d',
+                            valueFormat: 'yyyy/MM/dd',
                             maskSeparator: ' - ',
                             maskFormat: 'd MMM yyyy',
                             maskLocale: Localizations.localeOf(this.context).languageCode,
@@ -892,7 +892,7 @@ class _HomePageState extends State<HomePage> {
                   'entry': {
                     'label': DeepMap(item).getString('info.entry.label') ?? '',
                     'dateTimeValue': DateTimeValue(
-                      valueFormat: 'yyyy/M/d H:m',
+                      valueFormat: 'yyyy/MM/dd HH:mm',
                       maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                       maskLocale: Localizations.localeOf(this.context).languageCode,
                     ),
@@ -900,7 +900,7 @@ class _HomePageState extends State<HomePage> {
                   'exit': {
                     'label': DeepMap(item).getString('info.exit.label') ?? '',
                     'dateTimeValue': DateTimeValue(
-                      valueFormat: 'yyyy/M/d H:m',
+                      valueFormat: 'yyyy/MM/dd HH:mm',
                       maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                       maskLocale: Localizations.localeOf(this.context).languageCode,
                     ),

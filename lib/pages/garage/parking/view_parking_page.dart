@@ -260,7 +260,7 @@ class _ViewParkingPageState extends State<ViewParkingPage> {
                 'entry': {
                   'label': DeepMap(response.body).getString('parkingInfo.entry.label') ?? '',
                   'dateTimeValue': DateTimeValue(
-                    valueFormat: 'yyyy/M/d H:m',
+                    valueFormat: 'yyyy/MM/dd HH:mm',
                     maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                     maskLocale: Localizations.localeOf(this.context).languageCode,
                   ),
@@ -268,7 +268,7 @@ class _ViewParkingPageState extends State<ViewParkingPage> {
                 'exit': {
                   'label': DeepMap(response.body).getString('parkingInfo.exit.label') ?? '',
                   'dateTimeValue': DateTimeValue(
-                    valueFormat: 'yyyy/M/d H:m',
+                    valueFormat: 'yyyy/MM/dd HH:mm',
                     maskFormat: 'E d \'de\' MMM \'del\' yyyy\',\' HH:mm \'hrs.\'',
                     maskLocale: Localizations.localeOf(this.context).languageCode,
                   ),
