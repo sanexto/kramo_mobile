@@ -24,7 +24,7 @@ class TimePicker {
       initialEntryMode: TimePickerEntryMode.dial,
     );
 
-    return pickedTime != null ? DateTime(1970, 1, 1, pickedTime.hour, pickedTime.minute) : null;
+    return pickedTime == null ? null : DateTime(1970, 1, 1, pickedTime.hour, pickedTime.minute);
 
   }
 
